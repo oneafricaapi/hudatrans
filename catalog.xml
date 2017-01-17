@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/hudatran/RPServiceImpl?wsdl" uri="src/conf/xml-resources/web-service-references/RPServiceImpl/wsdl/localhost_8080/hudatran/RPServiceImpl.wsdl"/>
+    <system systemId="http://localhost:8080/rp/RPServiceImpl?wsdl" uri="src/conf/xml-resources/web-service-references/RPServiceImpl/wsdl/localhost_8080/rp/RPServiceImpl.wsdl"/>
+</catalog>
