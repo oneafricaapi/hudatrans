@@ -39,7 +39,7 @@
         
         if(pgr.getResponse_code().equals("00")){
             sale = engine.getSaleFromJson(pgr.getData());
-            System.out.println("sale ID:: "+sale.getSale_id());
+            response.sendRedirect("arbel");
         }
     }
 

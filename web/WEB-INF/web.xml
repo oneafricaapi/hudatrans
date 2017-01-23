@@ -36,6 +36,10 @@
         <servlet-name>MakePayment</servlet-name>
         <jsp-file>/add_sales.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>Dashboard</servlet-name>
+        <jsp-file>/dashboard.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RPServlet</servlet-name>
         <url-pattern>/rps</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>MakePayment</servlet-name>
         <url-pattern>/pagbabayad</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Dashboard</servlet-name>
+        <url-pattern>/arbel</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
