@@ -45,6 +45,20 @@ public interface RPService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getPendingTransaction", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.GetPendingTransaction")
+    @ResponseWrapper(localName = "getPendingTransactionResponse", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.GetPendingTransactionResponse")
+    public String getPendingTransaction(
+        @WebParam(name = "request", targetNamespace = "")
+        String request);
+
+    /**
+     * 
+     * @param request
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "getBank", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.GetBank")
     @ResponseWrapper(localName = "getBankResponse", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.GetBankResponse")
     public String getBank(
@@ -81,6 +95,17 @@ public interface RPService {
 
     /**
      * 
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getPaymethods", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.GetPaymethods")
+    @ResponseWrapper(localName = "getPaymethodsResponse", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.GetPaymethodsResponse")
+    public String getPaymethods();
+
+    /**
+     * 
      * @param request
      * @return
      *     returns java.lang.String
@@ -92,17 +117,6 @@ public interface RPService {
     public String getBanksInCountry(
         @WebParam(name = "request", targetNamespace = "")
         String request);
-
-    /**
-     * 
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getPaymethods", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.GetPaymethods")
-    @ResponseWrapper(localName = "getPaymethodsResponse", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.GetPaymethodsResponse")
-    public String getPaymethods();
 
     /**
      * 

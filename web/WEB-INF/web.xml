@@ -40,6 +40,10 @@
         <servlet-name>Dashboard</servlet-name>
         <jsp-file>/dashboard.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>Landing/Index Page</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RPServlet</servlet-name>
         <url-pattern>/rps</url-pattern>
@@ -80,9 +84,16 @@
         <servlet-name>Dashboard</servlet-name>
         <url-pattern>/arbel</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Landing/Index Page</servlet-name>
+        <url-pattern>/indizea</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>indizea</welcome-file>
+    </welcome-file-list>
 </web-app>
