@@ -4206,3 +4206,7 @@ padding: 6px 10px;
 .st-blue {
   background-color: #23b7e5;
 }
+
+.amount-align{
+    text-align: right;
+}

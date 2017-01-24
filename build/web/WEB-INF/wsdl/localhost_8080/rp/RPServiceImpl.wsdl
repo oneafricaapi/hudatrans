@@ -30,6 +30,10 @@
 
   <xs:element name="getPaymethodsResponse" type="tns:getPaymethodsResponse"/>
 
+  <xs:element name="getPendingTransaction" type="tns:getPendingTransaction"/>
+
+  <xs:element name="getPendingTransactionResponse" type="tns:getPendingTransactionResponse"/>
+
   <xs:element name="initiateTransaction" type="tns:initiateTransaction"/>
 
   <xs:element name="initiateTransactionResponse" type="tns:initiateTransactionResponse"/>
@@ -57,6 +61,18 @@
   </xs:complexType>
 
   <xs:complexType name="getCountryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPendingTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPendingTransactionResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
@@ -98,6 +114,16 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="getPaymethods">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getPaymethodsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="getBanksInCountry">
     <xs:sequence>
       <xs:element minOccurs="0" name="request" type="xs:string"/>
@@ -105,16 +131,6 @@
   </xs:complexType>
 
   <xs:complexType name="getBanksInCountryResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="getPaymethods">
-    <xs:sequence/>
-  </xs:complexType>
-
-  <xs:complexType name="getPaymethodsResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
@@ -192,12 +208,8 @@
 
 </xs:schema>
   </wsdl:types>
-  <wsdl:message name="getCountry">
-    <wsdl:part element="tns:getCountry" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getBankResponse">
-    <wsdl:part element="tns:getBankResponse" name="parameters">
+  <wsdl:message name="getPendingTransaction">
+    <wsdl:part element="tns:getPendingTransaction" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="loginResponse">
@@ -208,36 +220,12 @@
     <wsdl:part element="tns:getBeneficiaryResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="getBank">
-    <wsdl:part element="tns:getBank" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="saveBeneficiaryResponse">
-    <wsdl:part element="tns:saveBeneficiaryResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="login">
-    <wsdl:part element="tns:login" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="getBeneficiariesResponse">
     <wsdl:part element="tns:getBeneficiariesResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="getBeneficiary">
-    <wsdl:part element="tns:getBeneficiary" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getCountriesResponse">
-    <wsdl:part element="tns:getCountriesResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="registerResponse">
     <wsdl:part element="tns:registerResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getBanksInCountry">
-    <wsdl:part element="tns:getBanksInCountry" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getPaymethods">
@@ -264,20 +252,8 @@
     <wsdl:part element="tns:register" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="getCountryResponse">
-    <wsdl:part element="tns:getCountryResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="getBanksInCountryResponse">
     <wsdl:part element="tns:getBanksInCountryResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="saveTransactionResponse">
-    <wsdl:part element="tns:saveTransactionResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="initiateTransaction">
-    <wsdl:part element="tns:initiateTransaction" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="initiateTransactionResponse">
@@ -288,11 +264,65 @@
     <wsdl:part element="tns:saveBeneficiary" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getPendingTransactionResponse">
+    <wsdl:part element="tns:getPendingTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountry">
+    <wsdl:part element="tns:getCountry" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBankResponse">
+    <wsdl:part element="tns:getBankResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBank">
+    <wsdl:part element="tns:getBank" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveBeneficiaryResponse">
+    <wsdl:part element="tns:saveBeneficiaryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="login">
+    <wsdl:part element="tns:login" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBeneficiary">
+    <wsdl:part element="tns:getBeneficiary" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountriesResponse">
+    <wsdl:part element="tns:getCountriesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBanksInCountry">
+    <wsdl:part element="tns:getBanksInCountry" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryResponse">
+    <wsdl:part element="tns:getCountryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveTransactionResponse">
+    <wsdl:part element="tns:saveTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="initiateTransaction">
+    <wsdl:part element="tns:initiateTransaction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="RPService">
     <wsdl:operation name="getCountry">
       <wsdl:input message="tns:getCountry" name="getCountry">
     </wsdl:input>
       <wsdl:output message="tns:getCountryResponse" name="getCountryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPendingTransaction">
+      <wsdl:input message="tns:getPendingTransaction" name="getPendingTransaction">
+    </wsdl:input>
+      <wsdl:output message="tns:getPendingTransactionResponse" name="getPendingTransactionResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getBank">
@@ -313,16 +343,16 @@
       <wsdl:output message="tns:getBeneficiaryResponse" name="getBeneficiaryResponse">
     </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getBanksInCountry">
-      <wsdl:input message="tns:getBanksInCountry" name="getBanksInCountry">
-    </wsdl:input>
-      <wsdl:output message="tns:getBanksInCountryResponse" name="getBanksInCountryResponse">
-    </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getPaymethods">
       <wsdl:input message="tns:getPaymethods" name="getPaymethods">
     </wsdl:input>
       <wsdl:output message="tns:getPaymethodsResponse" name="getPaymethodsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBanksInCountry">
+      <wsdl:input message="tns:getBanksInCountry" name="getBanksInCountry">
+    </wsdl:input>
+      <wsdl:output message="tns:getBanksInCountryResponse" name="getBanksInCountryResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getBeneficiaries">
@@ -373,6 +403,15 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getPendingTransaction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPendingTransaction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPendingTransactionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getBank">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="getBank">
@@ -400,21 +439,21 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getBanksInCountry">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="getBanksInCountry">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="getBanksInCountryResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getPaymethods">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="getPaymethods">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getPaymethodsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBanksInCountry">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBanksInCountry">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBanksInCountryResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

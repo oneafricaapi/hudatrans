@@ -39,6 +39,7 @@
         
         if(pgr.getResponse_code().equals("00")){
             sale = engine.getSaleFromJson(pgr.getData());
+            session.setAttribute("success", "Your transaction was successful.");
             response.sendRedirect("arbel");
         }
     }
