@@ -95,6 +95,20 @@ public interface RPService {
 
     /**
      * 
+     * @param request
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getAllTransaction", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.GetAllTransaction")
+    @ResponseWrapper(localName = "getAllTransactionResponse", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.GetAllTransactionResponse")
+    public String getAllTransaction(
+        @WebParam(name = "request", targetNamespace = "")
+        String request);
+
+    /**
+     * 
      * @return
      *     returns java.lang.String
      */

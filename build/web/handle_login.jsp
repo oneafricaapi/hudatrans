@@ -16,32 +16,36 @@
     Login login = Login.builder().email(email).pass(pass).build();
     RPEngine engine = new RPEngine();
     PostGenericResponse pgr = engine.loginUser(login);
-    if(pgr.getResponse_code().equals("00")){
+    if (pgr.getResponse_code().equals("00")) {
         User user = engine.getUserFromJson(pgr.getData());
         session.setAttribute("user", user);
-        
+
         TransactionRequest tr = (TransactionRequest) session.getAttribute("TransactionRequest");
-        TransactionRequest updatedTR = TransactionRequest.builder().source_amount(tr.getSource_amount())
-                .destination_country(tr.getDestination_country()).pay_method(tr.getPay_method()).merchant_code(tr.getMerchant_code()).build();
+        if (tr != null) {
+            TransactionRequest updatedTR = TransactionRequest.builder().source_amount(tr.getSource_amount())
+                    .destination_country(tr.getDestination_country()).pay_method(tr.getPay_method()).merchant_code(tr.getMerchant_code()).build();
 
-        TransactionRequest responseTR = engine.initiateTransaction(updatedTR);
-        if (responseTR.getResponse_code().equals("00")) {
-            session.setAttribute("TransactionRequest", responseTR); //set transaction session
+            TransactionRequest responseTR = engine.initiateTransaction(updatedTR);
+            if (responseTR.getResponse_code().equals("00")) {
+                session.setAttribute("TransactionRequest", responseTR); //set transaction session
 
-            GenericCollectionResponse gcr = engine.getBeneficiaries(user);
+                GenericCollectionResponse gcr = engine.getBeneficiaries(user);
 
-            if (gcr.getResponse_code().equals("00")) {
-                session.setAttribute("beneficiaries", gcr.getResponse_data());
-                response.sendRedirect("select_beneficiary");
+                if (gcr.getResponse_code().equals("00")) {
+                    session.setAttribute("beneficiaries", gcr.getResponse_data());
+                    response.sendRedirect("select_beneficiary");
+                } else {
+                    session.setAttribute("error", gcr.getResponse_description());
+                    response.sendRedirect("identifier");
+                }
             } else {
-                session.setAttribute("error", gcr.getResponse_description());
+                session.setAttribute("error", responseTR.getResponse_description());
                 response.sendRedirect("identifier");
-            }        
-        } else {
-            session.setAttribute("error", responseTR.getResponse_description());
-            response.sendRedirect("identifier");
+            }
+        }else{
+            response.sendRedirect("arbel");
         }
-    }else{
+    } else {
         session.setAttribute("error", pgr.getResponse_description());
         response.sendRedirect("identifier");
     }

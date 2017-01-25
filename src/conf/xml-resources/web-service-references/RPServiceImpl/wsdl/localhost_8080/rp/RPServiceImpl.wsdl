@@ -2,6 +2,10 @@
   <wsdl:types>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.caniksea.rp.com" elementFormDefault="unqualified" targetNamespace="http://ws.caniksea.rp.com" version="1.0">
 
+  <xs:element name="getAllTransaction" type="tns:getAllTransaction"/>
+
+  <xs:element name="getAllTransactionResponse" type="tns:getAllTransactionResponse"/>
+
   <xs:element name="getBank" type="tns:getBank"/>
 
   <xs:element name="getBankResponse" type="tns:getBankResponse"/>
@@ -109,6 +113,18 @@
   </xs:complexType>
 
   <xs:complexType name="getBeneficiaryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllTransactionResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
@@ -276,6 +292,10 @@
     <wsdl:part element="tns:getBankResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getAllTransactionResponse">
+    <wsdl:part element="tns:getAllTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getBank">
     <wsdl:part element="tns:getBank" name="parameters">
     </wsdl:part>
@@ -294,6 +314,10 @@
   </wsdl:message>
   <wsdl:message name="getCountriesResponse">
     <wsdl:part element="tns:getCountriesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllTransaction">
+    <wsdl:part element="tns:getAllTransaction" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getBanksInCountry">
@@ -341,6 +365,12 @@
       <wsdl:input message="tns:getBeneficiary" name="getBeneficiary">
     </wsdl:input>
       <wsdl:output message="tns:getBeneficiaryResponse" name="getBeneficiaryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTransaction">
+      <wsdl:input message="tns:getAllTransaction" name="getAllTransaction">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllTransactionResponse" name="getAllTransactionResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getPaymethods">
@@ -436,6 +466,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getBeneficiaryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTransaction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllTransaction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllTransactionResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

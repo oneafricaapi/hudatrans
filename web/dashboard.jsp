@@ -4,6 +4,9 @@
     Author     : caniksea
 --%>
 
+<%@page import="java.math.BigInteger"%>
+<%@page import="java.util.HashSet"%>
+<%@page import="com.hudatrans.caniksea.model.Beneficiary"%>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="com.google.gson.JsonArray"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -19,7 +22,9 @@
     User user = (User) session.getAttribute("user");
     String customerName = "", customerFirstName = "";
     String pageTitle = "";
-    JsonArray pendingT = null;
+    int noOfPendingTransaction = 0, noOfTransactions = 0;
+    JsonArray pendingT = null, allT = null, beneficiaries = null;
+    Set<Object> beneficiarySet = new HashSet<>();
     if (user != null) {
         RPEngine engine = new RPEngine();
         customerFirstName = user.getFirst_name();
@@ -37,15 +42,36 @@
         }
 
         //get pending transactions
-        GenericCollectionResponse gcr = engine.getPendingTransactions(user.getContact_id());
+        GenericCollectionResponse gcr = engine.getTransactions(user.getContact_id(), "PENDING");
         if (gcr.getResponse_code().equals("00")) {
             if (!gcr.getResponse_data().isEmpty()) {
                 pendingT = engine.getPendingTransactionsFromJson(gcr.getResponse_data());
+                noOfPendingTransaction = pendingT.size();
             }
         }
 
+        //get all transactions
+        GenericCollectionResponse allTransactions = engine.getTransactions(user.getContact_id(), "ALL");
+        if (allTransactions.getResponse_code().equals("00")) {
+            if (!allTransactions.getResponse_data().isEmpty()) {
+                allT = engine.getAllTransactionsFromJson(allTransactions.getResponse_data());
+                noOfTransactions = allT.size();
+            }
+        }
+
+        //get beneficiaries
+        beneficiarySet = (Set<Object>) session.getAttribute("beneficiaries");
+        if (beneficiarySet == null) {
+            GenericCollectionResponse gcr_ben = engine.getBeneficiaries(user);
+            if (gcr_ben.getResponse_code().equals("00")) {
+                session.setAttribute("beneficiaries", gcr_ben.getResponse_data());
+                beneficiarySet = (Set<Object>) gcr_ben.getResponse_data();
+            }
+        }
+        beneficiaries = engine.getBenFromJson(beneficiarySet);
+
     } else {
-//        response.sendRedirect("indizea");
+        response.sendRedirect("indizea");
     }
 %>
 <!DOCTYPE html>
@@ -133,7 +159,7 @@
                                 <li class="divider"></li>
 
                                 <li>
-                                    <a href="#"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
+                                    <a href="phuma"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
                                 </li>
                             </ul>
                         </li>
@@ -191,7 +217,7 @@
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-blue"><i class="fa fa-th-list"></i></span>
                                 <div class="sm-st-info">
-                                    <span>3200</span>
+                                    <span><%= noOfTransactions%></span>
                                     Total Transactions
                                 </div>
                             </div>
@@ -227,7 +253,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Transaction Date</th>
-                                                <th>Beneficiary Name</th>
+                                                <th>Beneficiary</th>
                                                 <th class="amount-align">Order Amount</th>
                                                 <th class="amount-align">Beneficiary Amount</th>
                                                 <!--<th>Status</th>-->
@@ -236,16 +262,44 @@
                                         <tbody>
 
                                             <%
-                                                for (int i = 0; i < pendingT.size(); i++) {
-                                                    JsonObject o = (JsonObject) pendingT.get(i);
+                                                if (noOfPendingTransaction > 0) {
+                                                    int upperBound = pendingT.size() > 9 ? 9 : pendingT.size();
+                                                    for (int i = 0; i < upperBound; i++) {
+                                                        JsonObject o = (JsonObject) pendingT.get(i);
+                                                        String currency = o.get("currency").getAsString();
+                                                        String benId = o.get("beneficiary_id").getAsString();
+                                                        if (currency.equalsIgnoreCase("Naira")) {
+                                                            currency = "&#8358;";
+                                                        } else if (currency.equalsIgnoreCase("Cedis")) {
+                                                            currency = "&#8373;";
+                                                        } else if (currency.equalsIgnoreCase("Rand")) {
+                                                            currency = "ZAR";
+                                                        } else if (currency.equalsIgnoreCase("Pounds")) {
+                                                            currency = "&pound;";
+                                                        }
+                                                        //get beneficiary name
+                                                        String name = "";
+                                                        if (beneficiaries != null) {
+                                                            for (int j = 0; j < beneficiaries.size(); j++) {
+                                                                JsonObject p = (JsonObject) beneficiaries.get(j);
+                                                                double idDbl = p.get("beneficiary_id").getAsDouble();
+                                                                int id = (int) idDbl;
+                                                                String idStr = String.valueOf(id);
+                                                                if (idStr.equals(benId)) {
+                                                                    name = p.get("first_name").getAsString() + " " + p.get("last_name").getAsString();
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
                                             %>
                                             <tr>
-                                                <td><%= o.get("order_date").getAsString() %></td>
-                                                <td><%= o.get("beneficiary_id").getAsString() %></td>
-                                                <td class="amount-align">&pound; <%= o.get("sending_amount").getAsString() %></td>
-                                                <td class="amount-align">&#8358; <%= o.get("receiving_amount").getAsString() %></td>
+                                                <td><%= o.get("order_date").getAsString()%></td>
+                                                <td><%= name%></td>
+                                                <td class="amount-align">&pound; <%= o.get("sending_amount").getAsString()%></td>
+                                                <td class="amount-align"><%= currency%> <%= o.get("receiving_amount").getAsString()%></td>
                                             </tr>
                                             <%
+                                                    }
                                                 }
                                             %>
 
@@ -287,7 +341,7 @@
                                         <button data-dismiss="alert" class="close close-sm" type="button">
                                             <i class="fa fa-times"></i>
                                         </button>
-                                        <strong>**</strong> You have 5 pending transactions.
+                                        <strong>**</strong> You have <%= noOfPendingTransaction%> pending transactions.
                                     </div>
                                 </div>
                             </section>
@@ -307,18 +361,60 @@
                                 <div class="panel-body table-responsive">
                                     <table class="table table-hover">
                                         <tr>
-                                            <th>Transaction ID</th>
                                             <th>Transaction Date</th>
                                             <th>Beneficiary</th>
-                                            <th>Amount</th>
+                                            <th class="amount-align">Order Amount</th>
+                                            <th class="amount-align">Order Amount</th>
                                             <th>Status</th>
                                         </tr>
+                                        <%
+                                            if (noOfTransactions > 0) {
+                                                int upperBound = allT.size() > 5 ? 5 : allT.size();
+                                                for (int i = 0; i < upperBound; i++) {
+                                                    JsonObject o = (JsonObject) pendingT.get(i);
+                                                    String benId = o.get("beneficiary_id").getAsString();
+                                                    String currency = o.get("currency").getAsString();
+                                                    if (currency.equalsIgnoreCase("Naira")) {
+                                                        currency = "&#8358;";
+                                                    } else if (currency.equalsIgnoreCase("Cedis")) {
+                                                        currency = "&#8373;";
+                                                    } else if (currency.equalsIgnoreCase("Rand")) {
+                                                        currency = "ZAR";
+                                                    } else if (currency.equalsIgnoreCase("Pounds")) {
+                                                        currency = "&pound;";
+                                                    }
+                                                    String statusStyle = "label-success", status = o.get("status").getAsString();
+                                                    if (status.equalsIgnoreCase("PENDING")) {
+                                                        statusStyle = "label-warning";
+                                                    } else if (status.equalsIgnoreCase("Failed")) {
+                                                        statusStyle = "label-danger";
+                                                    }
+                                                    //get beneficiary name
+                                                    String name = "";
+                                                    if (beneficiaries != null) {
+                                                        for (int j = 0; j < beneficiaries.size(); j++) {
+                                                            JsonObject p = (JsonObject) beneficiaries.get(j);
+                                                            double idDbl = p.get("beneficiary_id").getAsDouble();
+                                                            int id = (int) idDbl;
+                                                            String idStr = String.valueOf(id);
+                                                            if (idStr.equals(benId)) {
+                                                                name = p.get("first_name").getAsString() + " " + p.get("last_name").getAsString();
+                                                                break;
+                                                            }
+                                                        }
+                                                    }
+                                        %>
                                         <tr>
-                                            <td>SSSDEEFDEerwer34234234</td>
-                                            <td>11-7-2014</td>
-                                            <td>John Doe</td>
-                                            <td>234</td>
-                                            <td><span class="label label-success">Completed</span></td>
+                                            <td><%= o.get("order_date").getAsString()%></td>
+                                            <td><%= name%></td>
+                                            <td class="amount-align">&pound; <%= o.get("sending_amount").getAsString()%></td>
+                                            <td class="amount-align"><%= currency%> <%= o.get("receiving_amount").getAsString()%></td>
+                                            <td><span class="label <%= statusStyle%>"><%= status%></span></td>
+                                        </tr>
+                                        <%
+                                                }
+                                            }
+                                        %>
                                     </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
