@@ -7,7 +7,6 @@ package com.hudatrans.caniksea.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.hudatrans.caniksea.model.Bank;
@@ -21,7 +20,6 @@ import com.hudatrans.caniksea.model.Sale;
 import com.hudatrans.caniksea.model.TransactionRequest;
 import com.hudatrans.caniksea.model.User;
 import com.hudatrans.caniksea.ws.client.impl.RPServiceEntry;
-import java.util.HashSet;
 import java.util.Set;
 import org.apache.log4j.Logger;
 
@@ -146,49 +144,55 @@ public class RPEngine {
 
     Country getCountryFromJson(JsonArray jsonArray) {
         JsonObject o = (JsonObject) jsonArray.get(0);
-        if(o != null){
+        if (o != null) {
             String dataString = GSON.toJson(o);
-            return  GSON.fromJson(dataString, Country.class);
-        }else{
+            return GSON.fromJson(dataString, Country.class);
+        } else {
             return null;
         }
     }
-    
-    public PostGenericResponse saveTransaction(Sale sale){
+
+    public PostGenericResponse saveTransaction(Sale sale) {
         String request = GSON.toJson(sale);
-        LOG.info("Calling saveTransaction with request: "+request);
+        LOG.info("Calling saveTransaction with request: " + request);
         String response = RPServiceEntry.getPort().saveTransaction(request);
-        LOG.info("Response from service: "+response);
+        LOG.info("Response from service: " + response);
         return GSON.fromJson(response, PostGenericResponse.class);
     }
-    
-    public Sale getSaleFromJson(Object jsonSale){
+
+    public Sale getSaleFromJson(Object jsonSale) {
         String userString = GSON.toJson(jsonSale);
-        return GSON.fromJson(userString, Sale.class);        
+        return GSON.fromJson(userString, Sale.class);
     }
-    
-    public GenericCollectionResponse getPendingTransactions(int userId){
+
+    public GenericCollectionResponse getTransactions(int userId, String type) {
         String userID = String.valueOf(userId);
-        LOG.info("Calling getPendingTransaction with request: "+userID);
-        String response = RPServiceEntry.getPort().getPendingTransaction(userID);
-        LOG.info("Response from service: "+response);
+        LOG.info("Calling getTransaction [" + type + "] with request: " + userID);
+        String response;
+        if (type.equals("PENDING")) {
+            response = RPServiceEntry.getPort().getPendingTransaction(userID);
+        }else{
+            response = RPServiceEntry.getPort().getAllTransaction(userID);
+        }
+        LOG.info("Response from service: " + response);
         return GSON.fromJson(response, GenericCollectionResponse.class);
     }
-    
-    public JsonArray getPendingTransactionsFromJson(Set<Object> objects){
+
+    public JsonArray getPendingTransactionsFromJson(Set<Object> objects) {
         String salesString = GSON.toJson(objects);
         JsonArray jsonArray = (JsonArray) new JsonParser().parse(salesString);
-//        Set<Sale> sales = new HashSet<>();
-//        for(int i = 0; i < jsonArray.size(); i++){
-//            JsonObject o = (JsonObject) jsonArray.get(i);
-//            JsonElement id = o.get("sale_id");
-//            double s = id.getAsDouble(); 
-//            int q = (int) Math.round(s);
-//            o.addProperty("sale_id", q);
-//            Sale sale = GSON.fromJson(o, Sale.class);
-//            LOG.info("Here is the corresponding class object:: "+sale);
-//            sales.add(sale);
-//        }
         return jsonArray;
+    }
+    
+    public JsonArray getAllTransactionsFromJson(Set<Object> objects){
+        String salesString = GSON.toJson(objects);
+        JsonArray ja = (JsonArray) new JsonParser().parse(salesString);
+        return ja;
+    }
+    
+    public JsonArray getBenFromJson(Set<Object> objects){
+        String benString = GSON.toJson(objects);
+        JsonArray ja = (JsonArray) new JsonParser().parse(benString);
+        return ja;
     }
 }
