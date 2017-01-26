@@ -117,3 +117,12 @@ and open the template in the editor.
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(0, 0, 0, 0.137255) 0px 1px 1px 0px, rgba(0, 0, 0, 0.117647) 0px 2px 1px -1px;
 }
 
+.cancel-payment {
+    color: #800000;
+}
+
+a.cancel-payment:hover{
+    color: #f4524d;
+    text-decoration: none;
+}
+

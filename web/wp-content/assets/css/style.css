@@ -4210,3 +4210,7 @@ padding: 6px 10px;
 .amount-align{
     text-align: right;
 }
+
+.remove_margin{
+    margin: 0;
+}

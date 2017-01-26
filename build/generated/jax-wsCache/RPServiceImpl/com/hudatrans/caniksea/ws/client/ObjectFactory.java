@@ -24,34 +24,40 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GetPendingTransaction_QNAME = new QName("http://ws.caniksea.rp.com", "getPendingTransaction");
     private final static QName _GetBeneficiaryResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getBeneficiaryResponse");
     private final static QName _LoginResponse_QNAME = new QName("http://ws.caniksea.rp.com", "loginResponse");
+    private final static QName _GetAllTransactionsResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getAllTransactionsResponse");
     private final static QName _GetBeneficiariesResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getBeneficiariesResponse");
     private final static QName _RegisterResponse_QNAME = new QName("http://ws.caniksea.rp.com", "registerResponse");
     private final static QName _GetPaymethods_QNAME = new QName("http://ws.caniksea.rp.com", "getPaymethods");
     private final static QName _GetBeneficiaries_QNAME = new QName("http://ws.caniksea.rp.com", "getBeneficiaries");
     private final static QName _GetCountries_QNAME = new QName("http://ws.caniksea.rp.com", "getCountries");
+    private final static QName _GetBanks_QNAME = new QName("http://ws.caniksea.rp.com", "getBanks");
+    private final static QName _GetSuccessfulTransactions_QNAME = new QName("http://ws.caniksea.rp.com", "getSuccessfulTransactions");
     private final static QName _SaveTransaction_QNAME = new QName("http://ws.caniksea.rp.com", "saveTransaction");
     private final static QName _GetPaymethodsResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getPaymethodsResponse");
     private final static QName _Register_QNAME = new QName("http://ws.caniksea.rp.com", "register");
+    private final static QName _GetBanksResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getBanksResponse");
     private final static QName _GetBanksInCountryResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getBanksInCountryResponse");
     private final static QName _InitiateTransactionResponse_QNAME = new QName("http://ws.caniksea.rp.com", "initiateTransactionResponse");
     private final static QName _SaveBeneficiary_QNAME = new QName("http://ws.caniksea.rp.com", "saveBeneficiary");
-    private final static QName _GetPendingTransactionResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getPendingTransactionResponse");
     private final static QName _GetCountry_QNAME = new QName("http://ws.caniksea.rp.com", "getCountry");
     private final static QName _GetBankResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getBankResponse");
-    private final static QName _GetAllTransactionResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getAllTransactionResponse");
+    private final static QName _GetAllTransactions_QNAME = new QName("http://ws.caniksea.rp.com", "getAllTransactions");
     private final static QName _GetBank_QNAME = new QName("http://ws.caniksea.rp.com", "getBank");
     private final static QName _SaveBeneficiaryResponse_QNAME = new QName("http://ws.caniksea.rp.com", "saveBeneficiaryResponse");
     private final static QName _Login_QNAME = new QName("http://ws.caniksea.rp.com", "login");
     private final static QName _GetBeneficiary_QNAME = new QName("http://ws.caniksea.rp.com", "getBeneficiary");
     private final static QName _GetCountriesResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getCountriesResponse");
-    private final static QName _GetAllTransaction_QNAME = new QName("http://ws.caniksea.rp.com", "getAllTransaction");
     private final static QName _GetBanksInCountry_QNAME = new QName("http://ws.caniksea.rp.com", "getBanksInCountry");
+    private final static QName _GetPendingTransactions_QNAME = new QName("http://ws.caniksea.rp.com", "getPendingTransactions");
+    private final static QName _GetFailedTransactionsResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getFailedTransactionsResponse");
     private final static QName _GetCountryResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getCountryResponse");
+    private final static QName _GetSuccessfulTransactionsResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getSuccessfulTransactionsResponse");
+    private final static QName _GetFailedTransactions_QNAME = new QName("http://ws.caniksea.rp.com", "getFailedTransactions");
     private final static QName _InitiateTransaction_QNAME = new QName("http://ws.caniksea.rp.com", "initiateTransaction");
     private final static QName _SaveTransactionResponse_QNAME = new QName("http://ws.caniksea.rp.com", "saveTransactionResponse");
+    private final static QName _GetPendingTransactionsResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getPendingTransactionsResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.hudatrans.caniksea.ws.client
@@ -61,11 +67,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAllTransactionResponse }
+     * Create an instance of {@link GetAllTransactions }
      * 
      */
-    public GetAllTransactionResponse createGetAllTransactionResponse() {
-        return new GetAllTransactionResponse();
+    public GetAllTransactions createGetAllTransactions() {
+        return new GetAllTransactions();
     }
 
     /**
@@ -82,14 +88,6 @@ public class ObjectFactory {
      */
     public GetBankResponse createGetBankResponse() {
         return new GetBankResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetPendingTransactionResponse }
-     * 
-     */
-    public GetPendingTransactionResponse createGetPendingTransactionResponse() {
-        return new GetPendingTransactionResponse();
     }
 
     /**
@@ -141,14 +139,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAllTransaction }
-     * 
-     */
-    public GetAllTransaction createGetAllTransaction() {
-        return new GetAllTransaction();
-    }
-
-    /**
      * Create an instance of {@link InitiateTransaction }
      * 
      */
@@ -165,6 +155,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetPendingTransactionsResponse }
+     * 
+     */
+    public GetPendingTransactionsResponse createGetPendingTransactionsResponse() {
+        return new GetPendingTransactionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetFailedTransactions }
+     * 
+     */
+    public GetFailedTransactions createGetFailedTransactions() {
+        return new GetFailedTransactions();
+    }
+
+    /**
+     * Create an instance of {@link GetFailedTransactionsResponse }
+     * 
+     */
+    public GetFailedTransactionsResponse createGetFailedTransactionsResponse() {
+        return new GetFailedTransactionsResponse();
+    }
+
+    /**
      * Create an instance of {@link GetCountryResponse }
      * 
      */
@@ -173,11 +187,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetPendingTransaction }
+     * Create an instance of {@link GetSuccessfulTransactionsResponse }
      * 
      */
-    public GetPendingTransaction createGetPendingTransaction() {
-        return new GetPendingTransaction();
+    public GetSuccessfulTransactionsResponse createGetSuccessfulTransactionsResponse() {
+        return new GetSuccessfulTransactionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetPendingTransactions }
+     * 
+     */
+    public GetPendingTransactions createGetPendingTransactions() {
+        return new GetPendingTransactions();
     }
 
     /**
@@ -197,11 +219,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAllTransactionsResponse }
+     * 
+     */
+    public GetAllTransactionsResponse createGetAllTransactionsResponse() {
+        return new GetAllTransactionsResponse();
+    }
+
+    /**
      * Create an instance of {@link GetBeneficiariesResponse }
      * 
      */
     public GetBeneficiariesResponse createGetBeneficiariesResponse() {
         return new GetBeneficiariesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetBanks }
+     * 
+     */
+    public GetBanks createGetBanks() {
+        return new GetBanks();
     }
 
     /**
@@ -261,6 +299,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetBanksResponse }
+     * 
+     */
+    public GetBanksResponse createGetBanksResponse() {
+        return new GetBanksResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetSuccessfulTransactions }
+     * 
+     */
+    public GetSuccessfulTransactions createGetSuccessfulTransactions() {
+        return new GetSuccessfulTransactions();
+    }
+
+    /**
      * Create an instance of {@link SaveTransaction }
      * 
      */
@@ -285,15 +339,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetPendingTransaction }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getPendingTransaction")
-    public JAXBElement<GetPendingTransaction> createGetPendingTransaction(GetPendingTransaction value) {
-        return new JAXBElement<GetPendingTransaction>(_GetPendingTransaction_QNAME, GetPendingTransaction.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetBeneficiaryResponse }{@code >}}
      * 
      */
@@ -309,6 +354,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "loginResponse")
     public JAXBElement<LoginResponse> createLoginResponse(LoginResponse value) {
         return new JAXBElement<LoginResponse>(_LoginResponse_QNAME, LoginResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllTransactionsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getAllTransactionsResponse")
+    public JAXBElement<GetAllTransactionsResponse> createGetAllTransactionsResponse(GetAllTransactionsResponse value) {
+        return new JAXBElement<GetAllTransactionsResponse>(_GetAllTransactionsResponse_QNAME, GetAllTransactionsResponse.class, null, value);
     }
 
     /**
@@ -357,6 +411,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetBanks }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getBanks")
+    public JAXBElement<GetBanks> createGetBanks(GetBanks value) {
+        return new JAXBElement<GetBanks>(_GetBanks_QNAME, GetBanks.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetSuccessfulTransactions }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getSuccessfulTransactions")
+    public JAXBElement<GetSuccessfulTransactions> createGetSuccessfulTransactions(GetSuccessfulTransactions value) {
+        return new JAXBElement<GetSuccessfulTransactions>(_GetSuccessfulTransactions_QNAME, GetSuccessfulTransactions.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SaveTransaction }{@code >}}
      * 
      */
@@ -381,6 +453,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "register")
     public JAXBElement<Register> createRegister(Register value) {
         return new JAXBElement<Register>(_Register_QNAME, Register.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetBanksResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getBanksResponse")
+    public JAXBElement<GetBanksResponse> createGetBanksResponse(GetBanksResponse value) {
+        return new JAXBElement<GetBanksResponse>(_GetBanksResponse_QNAME, GetBanksResponse.class, null, value);
     }
 
     /**
@@ -411,15 +492,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetPendingTransactionResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getPendingTransactionResponse")
-    public JAXBElement<GetPendingTransactionResponse> createGetPendingTransactionResponse(GetPendingTransactionResponse value) {
-        return new JAXBElement<GetPendingTransactionResponse>(_GetPendingTransactionResponse_QNAME, GetPendingTransactionResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetCountry }{@code >}}
      * 
      */
@@ -438,12 +510,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllTransactionResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllTransactions }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getAllTransactionResponse")
-    public JAXBElement<GetAllTransactionResponse> createGetAllTransactionResponse(GetAllTransactionResponse value) {
-        return new JAXBElement<GetAllTransactionResponse>(_GetAllTransactionResponse_QNAME, GetAllTransactionResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getAllTransactions")
+    public JAXBElement<GetAllTransactions> createGetAllTransactions(GetAllTransactions value) {
+        return new JAXBElement<GetAllTransactions>(_GetAllTransactions_QNAME, GetAllTransactions.class, null, value);
     }
 
     /**
@@ -492,15 +564,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllTransaction }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getAllTransaction")
-    public JAXBElement<GetAllTransaction> createGetAllTransaction(GetAllTransaction value) {
-        return new JAXBElement<GetAllTransaction>(_GetAllTransaction_QNAME, GetAllTransaction.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetBanksInCountry }{@code >}}
      * 
      */
@@ -510,12 +573,48 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetPendingTransactions }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getPendingTransactions")
+    public JAXBElement<GetPendingTransactions> createGetPendingTransactions(GetPendingTransactions value) {
+        return new JAXBElement<GetPendingTransactions>(_GetPendingTransactions_QNAME, GetPendingTransactions.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetFailedTransactionsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getFailedTransactionsResponse")
+    public JAXBElement<GetFailedTransactionsResponse> createGetFailedTransactionsResponse(GetFailedTransactionsResponse value) {
+        return new JAXBElement<GetFailedTransactionsResponse>(_GetFailedTransactionsResponse_QNAME, GetFailedTransactionsResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetCountryResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getCountryResponse")
     public JAXBElement<GetCountryResponse> createGetCountryResponse(GetCountryResponse value) {
         return new JAXBElement<GetCountryResponse>(_GetCountryResponse_QNAME, GetCountryResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetSuccessfulTransactionsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getSuccessfulTransactionsResponse")
+    public JAXBElement<GetSuccessfulTransactionsResponse> createGetSuccessfulTransactionsResponse(GetSuccessfulTransactionsResponse value) {
+        return new JAXBElement<GetSuccessfulTransactionsResponse>(_GetSuccessfulTransactionsResponse_QNAME, GetSuccessfulTransactionsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetFailedTransactions }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getFailedTransactions")
+    public JAXBElement<GetFailedTransactions> createGetFailedTransactions(GetFailedTransactions value) {
+        return new JAXBElement<GetFailedTransactions>(_GetFailedTransactions_QNAME, GetFailedTransactions.class, null, value);
     }
 
     /**
@@ -534,6 +633,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "saveTransactionResponse")
     public JAXBElement<SaveTransactionResponse> createSaveTransactionResponse(SaveTransactionResponse value) {
         return new JAXBElement<SaveTransactionResponse>(_SaveTransactionResponse_QNAME, SaveTransactionResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetPendingTransactionsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getPendingTransactionsResponse")
+    public JAXBElement<GetPendingTransactionsResponse> createGetPendingTransactionsResponse(GetPendingTransactionsResponse value) {
+        return new JAXBElement<GetPendingTransactionsResponse>(_GetPendingTransactionsResponse_QNAME, GetPendingTransactionsResponse.class, null, value);
     }
 
 }

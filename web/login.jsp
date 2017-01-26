@@ -3,6 +3,9 @@
     Created on : Jan 6, 2017, 6:51:02 PM
     Author     : caniksea
 --%>
+<%@page import="com.hudatrans.caniksea.model.GenericCollectionResponse"%>
+<%@page import="com.hudatrans.caniksea.controller.RPEngine"%>
+<%@page import="com.hudatrans.caniksea.model.User"%>
 <%@page import="com.hudatrans.caniksea.model.TransactionRequest"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -29,6 +32,29 @@
                     .source_amount(sourceAmountDbl).destination_country(destinationCountry)
                     .pay_method(payMethod).build();
             session.setAttribute("TransactionRequest", tr);
+
+            User user = (User) session.getAttribute("user");
+            if (user != null) {
+                RPEngine engine = new RPEngine();
+                TransactionRequest responseTR = engine.initiateTransaction(tr);
+                if (responseTR.getResponse_code().equals("00")) {
+                    session.setAttribute("TransactionRequest", responseTR); //set transaction session
+
+                    GenericCollectionResponse gcr = engine.getBeneficiaries(user);
+
+                    if (gcr.getResponse_code().equals("00")) {
+                        session.setAttribute("beneficiaries", gcr.getResponse_data());
+                        response.sendRedirect("select_beneficiary");
+                    } else {
+//                        session.setAttribute("error", gcr.getResponse_description());
+//                        response.sendRedirect("identifier");
+                    }
+                } else {
+                    session.setAttribute("error", responseTR.getResponse_description());
+                    response.sendRedirect("identifier");
+                }
+            }
+
         } catch (Exception e) {
             response.sendRedirect("index.jsp");
         }
