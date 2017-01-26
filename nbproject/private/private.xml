@@ -4,13 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/caniksea/Development_SRC/aka/hudatrans/web/existing_beneficiary.jsp</file>
-            <file>file:/home/caniksea/Development_SRC/aka/hudatrans/src/java/com/hudatrans/caniksea/controller/RPServlet.java</file>
             <file>file:/home/caniksea/Development_SRC/aka/hudatrans/web/dashboard.jsp</file>
             <file>file:/home/caniksea/Development_SRC/aka/hudatrans/src/java/com/hudatrans/caniksea/controller/RPEngine.java</file>
+            <file>file:/home/caniksea/Development_SRC/aka/hudatrans/web/handle_login.jsp</file>
             <file>file:/home/caniksea/Development_SRC/aka/hudatrans/web/add_sales.jsp</file>
-            <file>file:/home/caniksea/Development_SRC/aka/hudatrans/web/index.jsp</file>
-            <file>file:/home/caniksea/Development_SRC/aka/hudatrans/web/login.jsp</file>
             <file>file:/home/caniksea/Development_SRC/aka/hudatrans/src/java/com/hudatrans/caniksea/model/Sale.java</file>
+            <file>file:/home/caniksea/Development_SRC/aka/hudatrans/src/java/com/hudatrans/caniksea/model/Beneficiary.java</file>
         </group>
     </open-files>
 </project-private>

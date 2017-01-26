@@ -26,7 +26,6 @@ public class Loader {
     public List<Country> getCountries() {
         String s = RPENGINE.loadLookup("country");
         JsonArray jsonArray = (JsonArray) new JsonParser().parse(s);
-        System.out.println("JO: "+jsonArray.size());
         countries = new ArrayList<>();
         for(int i = 0; i < jsonArray.size(); i++){
             Country country = GSON.fromJson(jsonArray.get(i), Country.class);

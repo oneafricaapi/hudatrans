@@ -39,6 +39,8 @@ public class RPEngine {
 
         } else if (type.equals("country")) {
             response = RPServiceEntry.getPort().getCountries();
+        }else if (type.equals("banks")){
+            response = RPServiceEntry.getPort().getBanks();
         }
         LOG.info("Lookup Response: " + response);
         return response;
@@ -169,30 +171,32 @@ public class RPEngine {
         String userID = String.valueOf(userId);
         LOG.info("Calling getTransaction [" + type + "] with request: " + userID);
         String response;
-        if (type.equals("PENDING")) {
-            response = RPServiceEntry.getPort().getPendingTransaction(userID);
-        }else{
-            response = RPServiceEntry.getPort().getAllTransaction(userID);
+        switch (type) {
+            case "PENDING":
+                response = RPServiceEntry.getPort().getPendingTransactions(userID);
+                break;
+            case "COMPLETED":
+                response = RPServiceEntry.getPort().getSuccessfulTransactions(userID);
+                break;
+            case "FAILED":
+                response = RPServiceEntry.getPort().getFailedTransactions(userID);
+                break;
+            default:
+                response = RPServiceEntry.getPort().getAllTransactions(userID);
+                break;
         }
         LOG.info("Response from service: " + response);
         return GSON.fromJson(response, GenericCollectionResponse.class);
     }
 
-    public JsonArray getPendingTransactionsFromJson(Set<Object> objects) {
+    public JsonArray getJsonArrayFromObjects(Set<Object> objects) {
         String salesString = GSON.toJson(objects);
         JsonArray jsonArray = (JsonArray) new JsonParser().parse(salesString);
         return jsonArray;
     }
     
-    public JsonArray getAllTransactionsFromJson(Set<Object> objects){
-        String salesString = GSON.toJson(objects);
-        JsonArray ja = (JsonArray) new JsonParser().parse(salesString);
-        return ja;
-    }
-    
-    public JsonArray getBenFromJson(Set<Object> objects){
-        String benString = GSON.toJson(objects);
-        JsonArray ja = (JsonArray) new JsonParser().parse(benString);
-        return ja;
+    public JsonArray getJsonArrayLookUpData(String type){
+        String jsonString = loadLookup(type);
+        return (JsonArray) new JsonParser().parse(jsonString);
     }
 }

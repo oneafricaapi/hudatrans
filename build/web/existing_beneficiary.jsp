@@ -19,7 +19,7 @@
     if (user != null) {
         customerName = user.getFirst_name();
         TransactionRequest tr = (TransactionRequest) session.getAttribute("TransactionRequest");
-        message = "Welcome "+ customerName;
+        message = "Welcome " + customerName;
         if (tr != null) {
             fee = tr.getFee();
             total = tr.getTotal();
@@ -27,6 +27,8 @@
             sourceAmount = tr.getSource_amount();
         }
         Set<Beneficiary> beneficiaries = (Set<Beneficiary>) session.getAttribute("beneficiaries");
+    } else {
+        response.sendRedirect("indizea");
     }
 %>
 
@@ -50,7 +52,7 @@
                                     <form action="pagbabayad" method="post">
                                         <div class="details-container">
                                             <div class="mta-widget-container">
-                                                <div class="msg"><%= message %></div>
+                                                <div class="msg"><%= message%></div>
                                                 <!--<div class="top-container">-->
                                                 <div class="destination-country-container">
                                                     <label for="beneficiary">Select Beneficiary</label>
@@ -94,6 +96,7 @@
                                                 <button type="submit" class="btn button-submit" >Send Money</button>
                                                 <a href="fi_beneficiario">New Beneficiary? Click to add.</a>
                                                 <div class="spacer-or"></div>
+                                                <a href ="cancelTxn.jsp" class="cancel-link cancel-payment">Cancel Payment</a>
                                             </div>
                                         </div>
                                     </form>
