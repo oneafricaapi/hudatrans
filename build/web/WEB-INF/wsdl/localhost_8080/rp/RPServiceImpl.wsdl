@@ -2,6 +2,10 @@
   <wsdl:types>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.caniksea.rp.com" elementFormDefault="unqualified" targetNamespace="http://ws.caniksea.rp.com" version="1.0">
 
+  <xs:element name="deleteBeneficiary" type="tns:deleteBeneficiary"/>
+
+  <xs:element name="deleteBeneficiaryResponse" type="tns:deleteBeneficiaryResponse"/>
+
   <xs:element name="getAllTransactions" type="tns:getAllTransactions"/>
 
   <xs:element name="getAllTransactionsResponse" type="tns:getAllTransactionsResponse"/>
@@ -125,6 +129,18 @@
   </xs:complexType>
 
   <xs:complexType name="getBeneficiaryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteBeneficiary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteBeneficiaryResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
@@ -370,8 +386,16 @@
     <wsdl:part element="tns:getCountriesResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="deleteBeneficiary">
+    <wsdl:part element="tns:deleteBeneficiary" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getBanksInCountry">
     <wsdl:part element="tns:getBanksInCountry" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteBeneficiaryResponse">
+    <wsdl:part element="tns:deleteBeneficiaryResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getPendingTransactions">
@@ -435,6 +459,12 @@
       <wsdl:input message="tns:getBeneficiary" name="getBeneficiary">
     </wsdl:input>
       <wsdl:output message="tns:getBeneficiaryResponse" name="getBeneficiaryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBeneficiary">
+      <wsdl:input message="tns:deleteBeneficiary" name="deleteBeneficiary">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteBeneficiaryResponse" name="deleteBeneficiaryResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getBanksInCountry">
@@ -554,6 +584,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getBeneficiaryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBeneficiary">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteBeneficiary">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteBeneficiaryResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

@@ -25,6 +25,7 @@
 
         <!-- Director App -->
         <script src="wp-content/assets/js/Director/app.js" type="text/javascript"></script>
+        <script src="wp-content/assets/js/aa_script.js" type="text/javascript"></script>
 
         <!-- Director dashboard demo (This is only for demo purposes) -->
         <script src="wp-content/assets/js/Director/dashboard.js" type="text/javascript"></script>

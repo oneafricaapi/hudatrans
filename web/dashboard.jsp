@@ -210,7 +210,7 @@
                             <button data-dismiss="alert" class="close close-sm" type="button">
                                 <i class="fa fa-times"></i>
                             </button>
-                            <strong>All good!</strong> You have no recent notification.
+                            <strong>All good!</strong> No recent notification.
                         </div>
                         <% } else if (showError) { %>
                         <div class="alert alert-block alert-danger">

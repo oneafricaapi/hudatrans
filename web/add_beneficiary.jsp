@@ -22,7 +22,6 @@
 
 
 <div class="container">
-    <jsp:useBean id="loader" scope="request" class="com.hudatrans.caniksea.bean.Loader" />
     <div class="container_inner default_template_holder clearfix page_container_inner" >
         <div class="vc_row wpb_row section vc_row-fluid  vc_custom_1468974159274" style=' text-align:left;'>
             <div class=" full_section_inner clearfix">
@@ -40,6 +39,7 @@
                                         <div class="details-container">
                                             <form method="POST" action="tinyeuru" >
                                                 <div class="msg"><%= message%></div>
+                                                <input type="hidden" name="beneficiary_source" value="int_rp" />
                                                 <div >
                                                     <div class="input-container">
                                                         <input required placeholder="First Name" type="text" name="beneficiary_firstname"/>

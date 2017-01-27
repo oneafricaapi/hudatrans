@@ -86,7 +86,8 @@ $(function () {
             var url = service_root + "op=getData&datatype=banks&country_code=" + selected_country;
             $.getJSON(url, function (data) {
                 if (data.response_code === "00") {
-                    populateBanks(data);
+                    var element = document.getElementById("beneficiary_bank");
+                    populateBanks(data, element);
                 }
             }).done(function () {
                 $("#busyDiv").fadeOut(500);
@@ -116,6 +117,25 @@ $(function () {
             });
 //            var banksInCountry = getBanks(selected_country);
 //            console.log(banksInCountry);
+        }
+    });
+
+    $("#bg_country").change(function () {
+        var selected_country = $(this).val();
+        if (selected_country === "") {
+            document.getElementById("bg_bank").options.length = 0;
+            document.getElementById("bg_bank").options[0] = new Option("Select Bank", "", false, false);
+        } else {
+            $("#busyDiv").show();
+            var url = service_root + "op=getData&datatype=banks&country_code=" + selected_country;
+            $.getJSON(url, function (data) {
+                if (data.response_code === "00") {
+                    var element = document.getElementById("bg_bank");
+                    populateBanks(data, element);
+                }
+            }).done(function () {
+                $("#busyDiv").fadeOut(500);
+            });
         }
     });
 });
@@ -201,8 +221,7 @@ function getCountryData(selected_country, data) {
         return result[0].country_currency;
 }
 
-function populateBanks(data) {
-    var element = document.getElementById("beneficiary_bank");
+function populateBanks(data, element) {
     var banks = data.response_data;
     if (banks.length > 0) {
         if (element) {
@@ -220,9 +239,9 @@ function populateBanks(data) {
     }
 }
 
-function getBank(country_code, bank_id){
+function getBank(country_code, bank_id) {
     var result;
-    var url = service_root + "op=getData&datatype=bank&country_code=" + country_code + "&bank_id="+bank_id;
+    var url = service_root + "op=getData&datatype=bank&country_code=" + country_code + "&bank_id=" + bank_id;
     $("#busyDiv").show();
     $.ajax({
         url: url, //service_root + "get_country/" + country_code,
@@ -239,4 +258,9 @@ function getBank(country_code, bank_id){
     });
 //    result = result[0] === null ? {} : result[0];
     return result;
+}
+
+function confirmDelete(id){
+    var proceed = confirm("Delete " + id + "?");
+    if(!proceed) return false;
 }

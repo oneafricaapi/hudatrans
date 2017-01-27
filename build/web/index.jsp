@@ -17,7 +17,7 @@
     var page_scroll_amount_for_sticky = 650;
 </script>
 <div class="full_width" id="home_frag">
-    <jsp:useBean id="loader" scope="request" class="com.hudatrans.caniksea.bean.Loader" />
+    <jsp:useBean id="loader" scope="session" class="com.hudatrans.caniksea.bean.Loader" />
     <div class="full_width_inner" >
         <div class="vc_row wpb_row section vc_row-fluid  vc_custom_1475053735792 pb1">
             <div class=" full_section_inner clearfix">

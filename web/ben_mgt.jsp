@@ -3,6 +3,7 @@
     Created on : Jan 26, 2017, 1:45:14 PM
     Author     : caniksea
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="com.google.gson.JsonArray"%>
 <%@page import="com.hudatrans.caniksea.controller.RPEngine"%>
@@ -12,10 +13,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String pageTitle = "";
-    String customerName = "", customerFirstName = "";
+    String customerName = "", customerFirstName = "", message = "";
+    String infoStyle = "alert-success";
     Set<Object> beneficiarySet = new HashSet<>();
     JsonArray beneficiaries = null, countries = null, banks = null;
     int noOfBeneficiaries = 0;
+    boolean showInfo = false;
+
     User user = (User) session.getAttribute("user");
     if (user != null) {
         RPEngine engine = new RPEngine();
@@ -32,6 +36,20 @@
         countries = engine.getJsonArrayLookUpData("country");
         //get Banks
         banks = engine.getJsonArrayLookUpData("banks");
+        //get error message
+        String error = (String) session.getAttribute("error");
+        if (error != null && !error.isEmpty()) {
+            infoStyle = "alert-danger";
+            message = error;
+            showInfo = true;
+            session.removeAttribute("error");
+        }
+        String success = (String) session.getAttribute("success");
+        if (success != null && !success.isEmpty()) {
+            message = success;
+            showInfo = true;
+            session.removeAttribute("success");
+        }
 
     } else {
         response.sendRedirect("indizea");
@@ -66,18 +84,19 @@
                                     Beneficiaries
                                 </a>
                             </li>
-                            <!--                            <li class="">
-                                                            <a data-toggle="tab" href="#about-3">
-                                                                <i class="fa fa-user"></i>
-                                                                Add New
-                                                            </a>
-                                                        </li>-->
                         </ul>
                     </header>
                     <div class="panel-body">
+                        <%if (showInfo) {%>
+                        <div class="alert alert=block <%= infoStyle%>">
+                            <button data-dismiss="alert" class="close close-sm" type="button">
+                                <i class="fa fa-times"></i>
+                            </button>
+                            <%= message%>
+                        </div>
+                        <%}%>
                         <div class="tab-content">
                             <div id="home-3" class="tab-pane active">
-
                                 <div class="panel">
                                     <header class="panel-heading">
                                         <div class="row">
@@ -97,93 +116,46 @@
                                                             <div class="modal-body">
 
                                                                 <!--<form class="form-horizontal" role="form">-->
-                                                                <form role="form">
+                                                                <form role="form" method="POST" action="tinyeuru">
+                                                                    <input type="hidden" name="beneficiary_source" value="ext_rp" />
                                                                     <div class="panel-body">
                                                                         <div class="row">
                                                                             <div class="col-md-6 form-group">
-                                                                                <input type="text" placeholder="First Name" class="form-control" required>
+                                                                                <input type="text" placeholder="First Name" name="beneficiary_firstname" class="form-control" required>
                                                                             </div>
 
                                                                             <div class="col-md-6 form-group">
-                                                                                <input type="text" placeholder="Last Name" class="form-control">
+                                                                                <input type="text" placeholder="Last Name" name="beneficiary_lastname" class="form-control">
                                                                             </div>
 
                                                                             <div class="col-md-12 form-group">
-                                                                                <select id="bg_country" class="form-control" required>
-                                                                                    <option>Select Country</option>
-                                                                                    <option>Option 2</option>
-                                                                                    <option>Option 3</option>
+                                                                                <select id="bg_country" name="beneficiary_country" class="form-control" required>
+                                                                                    <option value="">Select Country</option>
+                                                                                    <c:forEach var="country" items="${loader.countries}">
+                                                                                        <option value="${country.country_iso_code}">${country.country_name}</option>
+                                                                                    </c:forEach>
                                                                                 </select>
                                                                             </div>
 
                                                                             <div class="col-md-6 form-group">
-                                                                                <select id="bg_bank" class="form-control" required>
+                                                                                <select id="bg_bank" name="beneficiary_bank" class="form-control" required>
                                                                                     <option>Select Bank</option>
-                                                                                    <option>Option 2</option>
-                                                                                    <option>Option 3</option>
                                                                                 </select>
                                                                             </div>
 
                                                                             <div class="col-md-6 form-group">
-                                                                                <input type="number" placeholder="Account Number" required class="form-control">
+                                                                                <input type="number" name="beneficiary_acc_number" placeholder="Account Number" required class="form-control">
                                                                             </div>
 
                                                                             <div class="col-md-6 col-xs-6 form-group">
-                                                                                <!--<div class="col-lg-offset-10 col-lg-10">-->
-                                                                                    <button type="submit" class="btn btn-info">Add</button>
-                                                                                <!--</div>-->
+                                                                                <button type="submit" class="btn btn-info">Add</button>
                                                                             </div>
 
                                                                             <div class="col-md-6 form-group">
-                                                                                <!--<div class="col-lg-offset-10 col-lg-10">-->
                                                                                 <button type="reset" class="btn btn-danger" style="float: right;">clear</button>
-                                                                                <!--</div>-->
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!--                                                                    <div class="form-group">
-                                                                                                                                            <label for="bg_firstname" class="col-lg-4 col-sm-4 control-label">First Name</label>
-                                                                                                                                            <div class="col-lg-8">
-                                                                                                                                                <input type="text" class="form-control" id="bg_firstname" placeholder="First Name" required>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                        <div class="form-group">
-                                                                                                                                            <label for="bg_lastname" class="col-lg-4 col-sm-4 control-label">Last Name</label>
-                                                                                                                                            <div class="col-lg-8">
-                                                                                                                                                <input type="text" class="form-control" id="bg_lastname" placeholder="Last Name" required>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                        <div class="form-group">
-                                                                                                                                            <label class="col-sm-4 control-label col-lg-4" for="bg_country">Country</label>
-                                                                                                                                            <div class="col-lg-8">
-                                                                                                                                                <select id="bg_country" class="form-control m-b-10" required>
-                                                                                                                                                    <option>Option 1</option>
-                                                                                                                                                    <option>Option 2</option>
-                                                                                                                                                    <option>Option 3</option>
-                                                                                                                                                </select>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                        <div class="form-group">
-                                                                                                                                            <label class="col-sm-4 control-label col-lg-4" for="bg_bank">Bank</label>
-                                                                                                                                            <div class="col-lg-8">
-                                                                                                                                                <select id="bg_bank" class="form-control m-b-10" required>
-                                                                                                                                                    <option>Option 1</option>
-                                                                                                                                                    <option>Option 2</option>
-                                                                                                                                                    <option>Option 3</option>
-                                                                                                                                                </select>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                        <div class="form-group">
-                                                                                                                                            <label class="col-sm-4 control-label col-lg-4" for="bg_accountNo">Account Number</label>
-                                                                                                                                            <div class="col-lg-8">
-                                                                                                                                                <input type="number" id="bg_accountNo" placeholder="0123456789" class="form-control" required >
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                        <div class="form-group">
-                                                                                                                                            <div class="col-lg-offset-2 col-lg-10">
-                                                                                                                                                <button type="submit" class="btn btn-default">Add</button>
-                                                                                                                                            </div>
-                                                                                                                                        </div>-->
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -208,6 +180,7 @@
                                                 <th>Country</th>
                                                 <th>Bank</th>
                                                 <th>Account Number</th>
+                                                <th></th>
                                             </tr>
                                             <%
                                                 //get beneficiary name
@@ -217,6 +190,7 @@
                                                         double idDbl = p.get("beneficiary_id").getAsDouble();
                                                         int id = (int) idDbl;
                                                         String idStr = String.valueOf(id);
+                                                        String fn = p.get("first_name").getAsString() + " " + p.get("last_name").getAsString();
                                                         String countryCode = p.get("country_code").getAsString();
                                                         double bankIdDbl = p.get("bank_id").getAsDouble();
                                                         int bankIdInt = (int) bankIdDbl;
@@ -251,6 +225,14 @@
                                                 <td><%= countryName%></td>
                                                 <td><%= bankName%></td>
                                                 <td><%= p.get("account_number").getAsString()%></td>
+                                                <td>
+                                                    <div class="pull-right hidden-phone">
+                                                        <form role="form" method="POST" action="delete_beneficiary.jsp">
+                                                            <input type="hidden" value="<%= idStr%>" name="bg_benid" />
+                                                            <button class="btn btn-danger btn-xs" id="<%= fn%>" onclick="return confirmDelete(this.id);" ><i class="fa fa-times"></i></button>
+                                                        </form>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <%                                    }
                                             } else {

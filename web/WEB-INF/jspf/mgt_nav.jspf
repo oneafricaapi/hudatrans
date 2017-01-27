@@ -30,8 +30,8 @@
                 </a>
             </li>
 
-            <li class="${pageContext.request.requestURI eq '/hudatrans/arbedl' ? 'active' : ''}">
-                <a href="simple.html">
+            <li class="${pageContext.request.requestURI eq '/hudatrans/send_penger' ? 'active' : ''}">
+                <a href="send_penger">
                     <i class="fa fa-money"></i> <span>Send Money</span>
                 </a>
             </li>
