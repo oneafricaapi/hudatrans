@@ -101,6 +101,20 @@ public interface RPService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "deleteBeneficiary", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.DeleteBeneficiary")
+    @ResponseWrapper(localName = "deleteBeneficiaryResponse", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.DeleteBeneficiaryResponse")
+    public String deleteBeneficiary(
+        @WebParam(name = "request", targetNamespace = "")
+        String request);
+
+    /**
+     * 
+     * @param request
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "getBanksInCountry", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.GetBanksInCountry")
     @ResponseWrapper(localName = "getBanksInCountryResponse", targetNamespace = "http://ws.caniksea.rp.com", className = "com.hudatrans.caniksea.ws.client.GetBanksInCountryResponse")
     public String getBanksInCountry(

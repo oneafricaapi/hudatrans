@@ -199,4 +199,10 @@ public class RPEngine {
         String jsonString = loadLookup(type);
         return (JsonArray) new JsonParser().parse(jsonString);
     }
+    
+    public PostGenericResponse deleteBeneficiary(String beneficiaryId){
+        LOG.info("Calling deleteBeneficiary with id: "+beneficiaryId);
+        String response = RPServiceEntry.getPort().deleteBeneficiary(beneficiaryId);
+        return GSON.fromJson(response, PostGenericResponse.class);
+    }
 }

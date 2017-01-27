@@ -49,7 +49,9 @@ public class ObjectFactory {
     private final static QName _Login_QNAME = new QName("http://ws.caniksea.rp.com", "login");
     private final static QName _GetBeneficiary_QNAME = new QName("http://ws.caniksea.rp.com", "getBeneficiary");
     private final static QName _GetCountriesResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getCountriesResponse");
+    private final static QName _DeleteBeneficiary_QNAME = new QName("http://ws.caniksea.rp.com", "deleteBeneficiary");
     private final static QName _GetBanksInCountry_QNAME = new QName("http://ws.caniksea.rp.com", "getBanksInCountry");
+    private final static QName _DeleteBeneficiaryResponse_QNAME = new QName("http://ws.caniksea.rp.com", "deleteBeneficiaryResponse");
     private final static QName _GetPendingTransactions_QNAME = new QName("http://ws.caniksea.rp.com", "getPendingTransactions");
     private final static QName _GetFailedTransactionsResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getFailedTransactionsResponse");
     private final static QName _GetCountryResponse_QNAME = new QName("http://ws.caniksea.rp.com", "getCountryResponse");
@@ -120,6 +122,22 @@ public class ObjectFactory {
      */
     public SaveBeneficiaryResponse createSaveBeneficiaryResponse() {
         return new SaveBeneficiaryResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteBeneficiaryResponse }
+     * 
+     */
+    public DeleteBeneficiaryResponse createDeleteBeneficiaryResponse() {
+        return new DeleteBeneficiaryResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteBeneficiary }
+     * 
+     */
+    public DeleteBeneficiary createDeleteBeneficiary() {
+        return new DeleteBeneficiary();
     }
 
     /**
@@ -564,12 +582,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteBeneficiary }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "deleteBeneficiary")
+    public JAXBElement<DeleteBeneficiary> createDeleteBeneficiary(DeleteBeneficiary value) {
+        return new JAXBElement<DeleteBeneficiary>(_DeleteBeneficiary_QNAME, DeleteBeneficiary.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetBanksInCountry }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "getBanksInCountry")
     public JAXBElement<GetBanksInCountry> createGetBanksInCountry(GetBanksInCountry value) {
         return new JAXBElement<GetBanksInCountry>(_GetBanksInCountry_QNAME, GetBanksInCountry.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteBeneficiaryResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.caniksea.rp.com", name = "deleteBeneficiaryResponse")
+    public JAXBElement<DeleteBeneficiaryResponse> createDeleteBeneficiaryResponse(DeleteBeneficiaryResponse value) {
+        return new JAXBElement<DeleteBeneficiaryResponse>(_DeleteBeneficiaryResponse_QNAME, DeleteBeneficiaryResponse.class, null, value);
     }
 
     /**

@@ -10,6 +10,7 @@
 <%@page import="com.hudatrans.caniksea.model.Beneficiary"%>
 <%@page import="com.hudatrans.caniksea.controller.RPEngine"%>
 <%
+    String source = request.getParameter("beneficiary_source");
     String beneficiary_firstname = request.getParameter("beneficiary_firstname");
     String beneficiary_lastname = request.getParameter("beneficiary_lastname");
     String beneficiary_country = request.getParameter("beneficiary_country");
@@ -29,10 +30,24 @@
 
             PostGenericResponse pgr = engine.saveBeneficiary(b);
             if (pgr.getResponse_code().equals("00")) {
-                GenericCollectionResponse gcr = engine.getBeneficiaries(user);
-                if (gcr.getResponse_code().equals("00")) {
-                    session.setAttribute("beneficiaries", gcr.getResponse_data());
-                    response.sendRedirect("select_beneficiary");
+                if (source.equals("int_rp")) {
+                    GenericCollectionResponse gcr = engine.getBeneficiaries(user);
+                    if (gcr.getResponse_code().equals("00")) {
+                        session.setAttribute("beneficiaries", gcr.getResponse_data());
+                        response.sendRedirect("select_beneficiary");
+                    }
+                }else if(source.equals("ext_rp")) {
+                    GenericCollectionResponse gcr = engine.getBeneficiaries(user);
+                    if (gcr.getResponse_code().equals("00")) {
+                        session.setAttribute("beneficiaries", gcr.getResponse_data());
+                    }
+                    session.setAttribute("success", pgr.getResponse_description());
+                    response.sendRedirect("benepisyaryo");
+                }
+            }else{
+                if(source.equals("ext_rp")){
+                    session.setAttribute("error", pgr.getResponse_description());
+                    response.sendRedirect("benepisyaryo");
                 }
             }
         }

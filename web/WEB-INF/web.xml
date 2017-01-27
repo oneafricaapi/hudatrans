@@ -61,6 +61,10 @@
         <servlet-name>Beneficiary MGT</servlet-name>
         <jsp-file>/ben_mgt.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>SendMoney-MGT</servlet-name>
+        <jsp-file>/sm-mgt.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RPServlet</servlet-name>
         <url-pattern>/rps</url-pattern>
@@ -112,6 +116,10 @@
     <servlet-mapping>
         <servlet-name>Beneficiary MGT</servlet-name>
         <url-pattern>/benepisyaryo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendMoney-MGT</servlet-name>
+        <url-pattern>/send_penger</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
