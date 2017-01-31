@@ -35,55 +35,54 @@
                     <header class="panel-heading">
                         Intiate Payment
                     </header>
-                    <div class="panel-body">
+                    <form id="sm_mgt_form" method="POST" action="pre_add_sales.jsp">
+                        <input type="hidden" id="bg_countryCode" name="bg_countryCode" />
+                        <div class="panel-body">
 
-                        <div class="row">
+                            <div class="row">
+                                <div class="col-md-10 col-sm-10 col-xs-9 form-group">
+                                    <select id="bg_beneficiary" name="destination_country_code" class="form-control" required>
+                                        <option value="" >Select Beneficiary</option>
+                                        <c:forEach var="beneficiary" items="${beneficiaries}">
+                                            <option value="${beneficiary.beneficiary_id}">
+                                                ${beneficiary.first_name}  ${beneficiary.middle_name} ${beneficiary.last_name} - ${beneficiary.account_number}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
 
-                            <div class="col-md-10 col-sm-10 col-xs-10 form-group">
-                                <select id="bg_country" name="destination_country_code" class="form-control" required>
-                                    <option value="" >Select Beneficiary</option>
-                                    <c:forEach var="beneficiary" items="${beneficiaries}">
-                                        <option value="${beneficiary.beneficiary_id}">${beneficiary.first_name}  ${beneficiary.middle_name} ${beneficiary.last_name} - ${beneficiary.account_number}</option>
-                                    </c:forEach>
-                                </select>
+                                <div class="col-md-2 col-sm-2 col-xs-3 form-group">
+                                    <img style="float: right; height: 30px;" id="bg_countryFlag" src="" alt="" />
+                                </div>
+
+                                <div class="col-md-12 form-group">
+                                    <select id="delivery-method" name="pay_method" class="form-control" required>
+                                        <option value="">Select Payment Method</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="col-md-6 form-group">
+                                    <span class="input-group-addon">POUNDS</span>
+                                    <input type="text" id="sending-amount" name="source_amount" class="form-control" disabled placeholder="Sending Amount">
+                                </div>
+
+                                <div class="col-md-6 form-group">
+                                    <span class="input-group-addon" id="bg_destinationCurr">RECEIVING CURRENCY</span>
+                                    <input type="text" id="receiving-amount" class="form-control" disabled placeholder="Receiving Amount">
+                                </div>
+
+                                <div class="col-md-6 col-xs-6 form-group">
+                                    <button type="submit" class="btn btn-info">Send Money</button>
+                                </div>
+
+                                <div class="col-md-6 form-group">
+                                    <button type="button" onclick="resetForm(sm_mgt_form);" class="btn btn-danger" style="float: right;">clear</button>
+                                </div>
                             </div>
 
-                            <div class="col-md-2 col-sm-2 col-xs-2 form-group">
-                                <img style="float: right; height: 30px;" id="countryFlag" src="http://localhost:8080/hudatrans/wp-content/country_flags/United-Kingdom-small.jpg" alt="" />
-                            </div>
-
-                            <div class="col-md-12 form-group">
-                                <select id="bg_country" name="destination_country_code" class="form-control" required>
-                                    <option value="">Select Payment Method</option>
-                                </select>
-                            </div>
-
-
-                            <div class="col-md-6 form-group">
-                                <span class="input-group-addon">POUNDS</span>
-                                <input type="text" class="form-control" placeholder="Sending Amount">
-                            </div>
-
-                            <div class="col-md-6 form-group">
-                                <span class="input-group-addon">POUNDS</span>
-                                <input type="text" class="form-control" disabled placeholder="Receiving Amount">
-                            </div>
-
-                            <!--                            <div class="col-md-4 form-group">
-                                                            <span class="input-group-addon">POUNDS</span>
-                                                            <input type="text" class="form-control" disabled placeholder="Username">
-                                                        </div>-->
-
-                            <div class="col-md-6 col-xs-6 form-group">
-                                <button type="submit" class="btn btn-info">Send Money</button>
-                            </div>
-
-                            <div class="col-md-6 form-group">
-                                <button type="reset" class="btn btn-danger" style="float: right;">clear</button>
-                            </div>
                         </div>
-
-                    </div>
+                    </form>
                 </section>
             </div>
             <div class="col-md-4">
@@ -92,23 +91,37 @@
                         Transaction Details
                     </header>
                     <div class="panel-body">
-                        <div class="alert alert-info">
-                            <button data-dismiss="alert" class="close close-sm" type="button">
-                                <i class="fa fa-times"></i>
-                            </button>
-                            <strong>Destination Country: </strong> <b style="float: right; padding-right: 10px;">United Kingdom</b>
+                        <div id="bg_tnxInfo_dest" class="alert alert-info">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    Destination Country:
+                                </div>
+                                <div class="col-md-5" style="text-align: right;"><strong id="bg_destinationCountry"></strong> </div>
+                            </div>
                         </div>
-                        <div class="alert alert-block alert-info">
-                            <button data-dismiss="alert" class="close close-sm" type="button">
-                                <i class="fa fa-times"></i>
-                            </button>
-                            <strong>Transaction Fee: </strong> <b style="float: right; padding-right: 10px;">0.0</b>
+                        <div id="bg_tnxInfo_exchange" class="alert alert-block alert-info">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    Exchange Rate:
+                                </div>
+                                <div class="col-md-5" style="text-align: right;"> <strong id="bg_exchange"></strong> </div>
+                            </div>
                         </div>
-                        <div class="alert alert-success">
-                            <button data-dismiss="alert" class="close close-sm" type="button">
-                                <i class="fa fa-times"></i>
-                            </button>
-                            <strong>Total: </strong> <b style="float: right; padding-right: 10px;">500.87</b>
+                        <div id="bg_tnxInfo_fee" class="alert alert-block alert-info">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    Transaction Fee:
+                                </div>
+                                <div class="col-md-5" style="text-align: right;"> <strong id="bg_fee"></strong> </div>
+                            </div>
+                        </div>
+                        <div id="bg_tnxInfo_total" class="alert alert-success">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    Total:
+                                </div>
+                                <div class="col-md-5" style="text-align: right;"> <strong id="bg_total"></strong> </div>
+                            </div>
                         </div>
                     </div>
                 </section>
