@@ -11,7 +11,8 @@ var country_obj = {};
 $(function () {
     //hide loading image
     $("#busyDiv, #msg-general, #msg-widget, #exchange-container, #transaction-info-div").hide();
-    $("#beneficiary_info").hide();
+    $("#beneficiary_info, #bg_tnxInfo_dest, #bg_tnxInfo_exchange, #bg_tnxInfo_fee").hide();
+    $("#bg_tnxInfo_total").hide();
     //init();
 
     $("#togglePass").click(function () {
@@ -70,6 +71,13 @@ $(function () {
 
         $("#transaction-fee").val(fee);
         $("#transaction-total").val(total);
+
+        $("#bg_fee").html(fee);
+        $("#bg_total").html(total);
+
+        if ($("#bg_tnxInfo_fee"))
+            $("#bg_tnxInfo_fee, #bg_tnxInfo_total").fadeIn(300);
+
         if (amountInBaseCurrency === "" || destinationAmount === "")
             $("#transaction-info-div").hide();
         else
@@ -106,9 +114,9 @@ $(function () {
             $.getJSON(url, function (data) {
                 console.log(url, data);
                 if (data.response_code === "00") {
-                    var country = getCountry(data.data.country_code);
+                    country_obj = getCountry(data.data.country_code);
                     var bank = getBank(data.data.country_code, data.data.bank_id);
-                    $("#beneficiary_info_country").html(country.country_name);
+                    $("#beneficiary_info_country").html(country_obj.country_name);
                     $("#beneficiary_info_bank").html(bank.data.bank_name);
                     $("#beneficiary_info").fadeIn(500);
                 }
@@ -136,6 +144,42 @@ $(function () {
             }).done(function () {
                 $("#busyDiv").fadeOut(500);
             });
+        }
+    });
+
+    $("#bg_beneficiary").change(function () {
+        var selectedBen = $(this).val();
+        var imagePath = "", country_currency = "RECEIVING CURRENCY", country_name = "";
+        var exchange_rate = "";
+        if (selectedBen !== "") {
+            var url = service_root + "op=getData&datatype=beneficiary&beneficiaryId=" + selectedBen;
+            $.getJSON(url, function (data) {
+                if (data.response_code === "00") {
+                    $("#bg_countryCode").val(data.data.country_code);
+                    
+                    country_obj = getCountry(data.data.country_code);
+                    var bank = getBank(data.data.country_code, data.data.bank_id);
+
+                    imagePath = country_obj.flag_path === undefined ? "" : site_root + country_obj.flag_path; //set flag.
+                    country_currency = country_obj.country_currency === null ? "" : country_obj.country_currency.toUpperCase();
+                    country_name = country_obj.country_name === null ? "" : country_obj.country_name;
+                    exchange_rate = country_obj.exchange_rate === null ? "" : country_obj.exchange_rate;
+
+                    $("#sending-amount, #receiving-amount").prop('disabled', false);
+                    $("#bg_countryFlag").attr("src", imagePath);
+                    $("#bg_destinationCurr").html(country_currency);
+                    $("#bg_destinationCountry").html(country_name);
+                    $("#bg_exchange").html(exchange_rate);
+                    $("#bg_tnxInfo_dest, #bg_tnxInfo_exchange").fadeIn(300);
+                }
+                getPaymentMethod(selectedBen);
+            }).done(function () {
+                $("#busyDiv").fadeOut(500);
+            });
+        } else {
+            $("#bg_tnxInfo_dest, #bg_tnxInfo_exchange, #bg_tnxInfo_fee, #bg_tnxInfo_total").fadeOut(250);
+            $("#sending-amount, #receiving-amount").prop('disabled', true);
+            $("#bg_fee, #bg_total, bg_countryFlag, bg_destinationCurr, bg_destinationCountry, #bg_exchange").html("");
         }
     });
 });
@@ -185,7 +229,7 @@ function populatePayMethods(data) {
     var element = document.getElementById("delivery-method");
     if (element) {
         element.options.length = 0;
-        element.options[0] = new Option("Select...", "", false, false);
+        element.options[0] = new Option("Select Payment Method", "", false, false);
         for (var i = 0; i < data.length; i++) {
             element.options[i + 1] = new Option(data[i].method_name, data[i].id, false, false);
         }
@@ -260,7 +304,14 @@ function getBank(country_code, bank_id) {
     return result;
 }
 
-function confirmDelete(id){
+function confirmDelete(id) {
     var proceed = confirm("Delete " + id + "?");
-    if(!proceed) return false;
+    if (!proceed)
+        return false;
+}
+
+function resetForm(element) {
+    element.reset();
+    $("#sending-amount, #receiving-amount").prop('disabled', true);
+    $("#bg_tnxInfo_dest, #bg_tnxInfo_exchange, #bg_tnxInfo_fee, #bg_tnxInfo_total").fadeOut(250);
 }

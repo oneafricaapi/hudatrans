@@ -36,11 +36,13 @@
         successMessage = (String) session.getAttribute("success");
         if (successMessage != null && !successMessage.isEmpty()) {
             showSuccess = true;
+            session.removeAttribute("success");
         }
 
         errorMessage = (String) session.getAttribute("error");
         if (errorMessage != null && !errorMessage.isEmpty()) {
             showError = true;
+            session.removeAttribute("error");
         }
 
         //get pending transactions
@@ -217,7 +219,7 @@
                             <button data-dismiss="alert" class="close close-sm" type="button">
                                 <i class="fa fa-times"></i>
                             </button>
-                            <strong>Oh snap!</strong> Your last transaction was not successful.
+                            <strong>Oh snap!</strong> Your last transaction was not successful. <%= errorMessage %>
                         </div>
                         <% } else if (showSuccess) { %>
                         <div class="alert alert-success">
