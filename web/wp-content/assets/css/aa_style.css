@@ -1,0 +1,128 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 3, 2017, 10:09:32 PM
+    Author     : caniksea
+*/
+
+
+.loading {
+    background: url(../images/black_fade.png);
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    position: fixed;
+    z-index: 2;
+    /*display: none;*/
+}
+
+.loading-box {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -20px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.loading-box img {
+    width: 30px;
+    margin: 5px;
+}
+
+.widget-top select, .widget-bottom select {
+    padding-left: 10px !important;
+}
+
+.transaction-info-details{
+    border: none;
+    font-size: 21px;
+}
+
+#msg-general {
+    text-align: center;
+}
+
+.hideShowPassword-toggle {
+    background-image: url(../images/wink.svg);
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    height: 44px;
+    overflow: hidden;
+    text-indent: -9999em;
+    width: 44px;
+    margin-top: -15px !important;
+}
+.hideShowPassword-toggle-hide {
+    background-position: -44px center;
+}
+
+.hideShowPassword-wrapper {
+    height: 44px;  
+}
+
+.tnx_info{
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    /*font-weight: bold;*/
+    color: #999999;
+    font-size: 20px;
+    text-align: right;
+}
+
+.beneficiary_bank_info{    
+    color: #000; 
+    /*#1F9FB4;*/
+    font-size: 20px;
+    text-align: left;
+}
+
+.tnx_money {
+    color: #000; 
+    /*#1F9FB4;*/
+    font-size: 20px;
+    text-align: right;
+}
+
+.custom-select {
+    border-color: blue;
+    margin-bottom: 10px;
+}
+
+.beneficiary_selection{
+    padding-left: 10px;
+    background-color: #fff !important;
+    height: 61px !important;
+    border-color: transparent;
+    margin-top: 0px;
+    margin-right: -2px;
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 18px;
+    width: 100%;
+    outline: none;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(0, 0, 0, 0.137255) 0px 1px 1px 0px, rgba(0, 0, 0, 0.117647) 0px 2px 1px -1px;
+}
+
+.cancel-payment {
+    color: #800000;
+}
+
+a.cancel-payment:hover{
+    color: #f4524d;
+    text-decoration: none;
+}
+

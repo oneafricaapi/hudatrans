@@ -1,0 +1,713 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.caniksea.rp.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="RPServiceImpl" targetNamespace="http://ws.caniksea.rp.com">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.caniksea.rp.com" elementFormDefault="unqualified" targetNamespace="http://ws.caniksea.rp.com" version="1.0">
+
+  <xs:element name="deleteBeneficiary" type="tns:deleteBeneficiary"/>
+
+  <xs:element name="deleteBeneficiaryResponse" type="tns:deleteBeneficiaryResponse"/>
+
+  <xs:element name="getAllTransactions" type="tns:getAllTransactions"/>
+
+  <xs:element name="getAllTransactionsResponse" type="tns:getAllTransactionsResponse"/>
+
+  <xs:element name="getBank" type="tns:getBank"/>
+
+  <xs:element name="getBankResponse" type="tns:getBankResponse"/>
+
+  <xs:element name="getBanks" type="tns:getBanks"/>
+
+  <xs:element name="getBanksInCountry" type="tns:getBanksInCountry"/>
+
+  <xs:element name="getBanksInCountryResponse" type="tns:getBanksInCountryResponse"/>
+
+  <xs:element name="getBanksResponse" type="tns:getBanksResponse"/>
+
+  <xs:element name="getBeneficiaries" type="tns:getBeneficiaries"/>
+
+  <xs:element name="getBeneficiariesResponse" type="tns:getBeneficiariesResponse"/>
+
+  <xs:element name="getBeneficiary" type="tns:getBeneficiary"/>
+
+  <xs:element name="getBeneficiaryResponse" type="tns:getBeneficiaryResponse"/>
+
+  <xs:element name="getCountries" type="tns:getCountries"/>
+
+  <xs:element name="getCountriesResponse" type="tns:getCountriesResponse"/>
+
+  <xs:element name="getCountry" type="tns:getCountry"/>
+
+  <xs:element name="getCountryResponse" type="tns:getCountryResponse"/>
+
+  <xs:element name="getFailedTransactions" type="tns:getFailedTransactions"/>
+
+  <xs:element name="getFailedTransactionsResponse" type="tns:getFailedTransactionsResponse"/>
+
+  <xs:element name="getPaymethods" type="tns:getPaymethods"/>
+
+  <xs:element name="getPaymethodsResponse" type="tns:getPaymethodsResponse"/>
+
+  <xs:element name="getPendingTransactions" type="tns:getPendingTransactions"/>
+
+  <xs:element name="getPendingTransactionsResponse" type="tns:getPendingTransactionsResponse"/>
+
+  <xs:element name="getSuccessfulTransactions" type="tns:getSuccessfulTransactions"/>
+
+  <xs:element name="getSuccessfulTransactionsResponse" type="tns:getSuccessfulTransactionsResponse"/>
+
+  <xs:element name="initiateTransaction" type="tns:initiateTransaction"/>
+
+  <xs:element name="initiateTransactionResponse" type="tns:initiateTransactionResponse"/>
+
+  <xs:element name="login" type="tns:login"/>
+
+  <xs:element name="loginResponse" type="tns:loginResponse"/>
+
+  <xs:element name="register" type="tns:register"/>
+
+  <xs:element name="registerResponse" type="tns:registerResponse"/>
+
+  <xs:element name="saveBeneficiary" type="tns:saveBeneficiary"/>
+
+  <xs:element name="saveBeneficiaryResponse" type="tns:saveBeneficiaryResponse"/>
+
+  <xs:element name="saveTransaction" type="tns:saveTransaction"/>
+
+  <xs:element name="saveTransactionResponse" type="tns:saveTransactionResponse"/>
+
+  <xs:complexType name="getCountry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCountryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllTransactions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllTransactionsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBank">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBankResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="login">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="reuest" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBeneficiary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBeneficiaryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteBeneficiary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteBeneficiaryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBanksInCountry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBanksInCountryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPaymethods">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getPaymethodsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBeneficiaries">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBeneficiariesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCountries">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getCountriesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBanks">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getBanksResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPendingTransactions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPendingTransactionsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSuccessfulTransactions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSuccessfulTransactionsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveTransactionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="register">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="registerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFailedTransactions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFailedTransactionsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="initiateTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="initiateTransactionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveBeneficiary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveBeneficiaryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="loginResponse">
+    <wsdl:part element="tns:loginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBeneficiaryResponse">
+    <wsdl:part element="tns:getBeneficiaryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllTransactionsResponse">
+    <wsdl:part element="tns:getAllTransactionsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBeneficiariesResponse">
+    <wsdl:part element="tns:getBeneficiariesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerResponse">
+    <wsdl:part element="tns:registerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPaymethods">
+    <wsdl:part element="tns:getPaymethods" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBeneficiaries">
+    <wsdl:part element="tns:getBeneficiaries" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountries">
+    <wsdl:part element="tns:getCountries" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBanks">
+    <wsdl:part element="tns:getBanks" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSuccessfulTransactions">
+    <wsdl:part element="tns:getSuccessfulTransactions" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveTransaction">
+    <wsdl:part element="tns:saveTransaction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPaymethodsResponse">
+    <wsdl:part element="tns:getPaymethodsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="register">
+    <wsdl:part element="tns:register" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBanksResponse">
+    <wsdl:part element="tns:getBanksResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBanksInCountryResponse">
+    <wsdl:part element="tns:getBanksInCountryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="initiateTransactionResponse">
+    <wsdl:part element="tns:initiateTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveBeneficiary">
+    <wsdl:part element="tns:saveBeneficiary" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountry">
+    <wsdl:part element="tns:getCountry" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBankResponse">
+    <wsdl:part element="tns:getBankResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllTransactions">
+    <wsdl:part element="tns:getAllTransactions" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBank">
+    <wsdl:part element="tns:getBank" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveBeneficiaryResponse">
+    <wsdl:part element="tns:saveBeneficiaryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="login">
+    <wsdl:part element="tns:login" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBeneficiary">
+    <wsdl:part element="tns:getBeneficiary" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountriesResponse">
+    <wsdl:part element="tns:getCountriesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteBeneficiary">
+    <wsdl:part element="tns:deleteBeneficiary" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBanksInCountry">
+    <wsdl:part element="tns:getBanksInCountry" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteBeneficiaryResponse">
+    <wsdl:part element="tns:deleteBeneficiaryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPendingTransactions">
+    <wsdl:part element="tns:getPendingTransactions" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFailedTransactionsResponse">
+    <wsdl:part element="tns:getFailedTransactionsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryResponse">
+    <wsdl:part element="tns:getCountryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSuccessfulTransactionsResponse">
+    <wsdl:part element="tns:getSuccessfulTransactionsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFailedTransactions">
+    <wsdl:part element="tns:getFailedTransactions" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveTransactionResponse">
+    <wsdl:part element="tns:saveTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="initiateTransaction">
+    <wsdl:part element="tns:initiateTransaction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPendingTransactionsResponse">
+    <wsdl:part element="tns:getPendingTransactionsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="RPService">
+    <wsdl:operation name="getCountry">
+      <wsdl:input message="tns:getCountry" name="getCountry">
+    </wsdl:input>
+      <wsdl:output message="tns:getCountryResponse" name="getCountryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTransactions">
+      <wsdl:input message="tns:getAllTransactions" name="getAllTransactions">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllTransactionsResponse" name="getAllTransactionsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBank">
+      <wsdl:input message="tns:getBank" name="getBank">
+    </wsdl:input>
+      <wsdl:output message="tns:getBankResponse" name="getBankResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <wsdl:input message="tns:login" name="login">
+    </wsdl:input>
+      <wsdl:output message="tns:loginResponse" name="loginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBeneficiary">
+      <wsdl:input message="tns:getBeneficiary" name="getBeneficiary">
+    </wsdl:input>
+      <wsdl:output message="tns:getBeneficiaryResponse" name="getBeneficiaryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBeneficiary">
+      <wsdl:input message="tns:deleteBeneficiary" name="deleteBeneficiary">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteBeneficiaryResponse" name="deleteBeneficiaryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBanksInCountry">
+      <wsdl:input message="tns:getBanksInCountry" name="getBanksInCountry">
+    </wsdl:input>
+      <wsdl:output message="tns:getBanksInCountryResponse" name="getBanksInCountryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaymethods">
+      <wsdl:input message="tns:getPaymethods" name="getPaymethods">
+    </wsdl:input>
+      <wsdl:output message="tns:getPaymethodsResponse" name="getPaymethodsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBeneficiaries">
+      <wsdl:input message="tns:getBeneficiaries" name="getBeneficiaries">
+    </wsdl:input>
+      <wsdl:output message="tns:getBeneficiariesResponse" name="getBeneficiariesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountries">
+      <wsdl:input message="tns:getCountries" name="getCountries">
+    </wsdl:input>
+      <wsdl:output message="tns:getCountriesResponse" name="getCountriesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBanks">
+      <wsdl:input message="tns:getBanks" name="getBanks">
+    </wsdl:input>
+      <wsdl:output message="tns:getBanksResponse" name="getBanksResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPendingTransactions">
+      <wsdl:input message="tns:getPendingTransactions" name="getPendingTransactions">
+    </wsdl:input>
+      <wsdl:output message="tns:getPendingTransactionsResponse" name="getPendingTransactionsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSuccessfulTransactions">
+      <wsdl:input message="tns:getSuccessfulTransactions" name="getSuccessfulTransactions">
+    </wsdl:input>
+      <wsdl:output message="tns:getSuccessfulTransactionsResponse" name="getSuccessfulTransactionsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveTransaction">
+      <wsdl:input message="tns:saveTransaction" name="saveTransaction">
+    </wsdl:input>
+      <wsdl:output message="tns:saveTransactionResponse" name="saveTransactionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <wsdl:input message="tns:register" name="register">
+    </wsdl:input>
+      <wsdl:output message="tns:registerResponse" name="registerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFailedTransactions">
+      <wsdl:input message="tns:getFailedTransactions" name="getFailedTransactions">
+    </wsdl:input>
+      <wsdl:output message="tns:getFailedTransactionsResponse" name="getFailedTransactionsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="initiateTransaction">
+      <wsdl:input message="tns:initiateTransaction" name="initiateTransaction">
+    </wsdl:input>
+      <wsdl:output message="tns:initiateTransactionResponse" name="initiateTransactionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveBeneficiary">
+      <wsdl:input message="tns:saveBeneficiary" name="saveBeneficiary">
+    </wsdl:input>
+      <wsdl:output message="tns:saveBeneficiaryResponse" name="saveBeneficiaryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RPServiceImplSoapBinding" type="tns:RPService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCountry">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCountry">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTransactions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllTransactions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllTransactionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBank">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBank">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBankResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="login">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBeneficiary">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBeneficiary">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBeneficiaryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBeneficiary">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteBeneficiary">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteBeneficiaryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBanksInCountry">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBanksInCountry">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBanksInCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaymethods">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPaymethods">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPaymethodsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBeneficiaries">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBeneficiaries">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBeneficiariesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountries">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCountries">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountriesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBanks">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBanks">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBanksResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPendingTransactions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPendingTransactions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPendingTransactionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSuccessfulTransactions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSuccessfulTransactions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSuccessfulTransactionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveTransaction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="saveTransaction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveTransactionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="register">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFailedTransactions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFailedTransactions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFailedTransactionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="initiateTransaction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="initiateTransaction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="initiateTransactionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveBeneficiary">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="saveBeneficiary">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveBeneficiaryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RPServiceImpl">
+    <wsdl:port binding="tns:RPServiceImplSoapBinding" name="RPServicePort">
+      <soap:address location="http://localhost:8080/rp/RPServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

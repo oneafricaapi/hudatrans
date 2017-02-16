@@ -1,0 +1,158 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<header class=" scroll_header_top_area  stick scrolled_not_transparent with_border page_header">
+    <div class="header_inner clearfix">
+        <div class="header_top_bottom_holder">
+            <div class="header_bottom clearfix" style='' >
+                <div class="container">
+                    <div class="container_inner clearfix">
+                        <div class="header_inner_left">
+                            <div class="mobile_menu_button">
+                                <span><i class="qode_icon_font_awesome fa fa-bars " ></i></span>
+                            </div>
+                            <div class="logo_wrapper">
+                                <div class="logo">
+                                    <a href="index.html">
+                                        <img  id="logoImage"  src="wp-content/uploads/2016/07/logo-beta.png" />                      
+                                    </a>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header_inner_right">
+                            <div class="side_menu_button_wrapper right">
+                                <div class="side_menu_button"></div>
+                            </div>
+                        </div>
+                        <nav class="main_menu drop_down right">
+                            <ul id="menu-primary-menu" class="">
+                                <li id="nav-menu-item-16751" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children  has_sub narrow">
+                                    <a href="send-money/index.html" class=""><i class="menu_icon blank fa"></i><span>Send Money</span><span class="plus"></span></a>
+                                    <div class="second">
+                                        <div class="inner">
+                                            <ul>
+                                                <li id="nav-menu-item-17735" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub"><a href="#" class=""><i class="menu_icon blank fa"></i><span>Africa</span><span class="plus"></span><i class="q_menu_arrow fa fa-angle-right"></i></a>
+                                                    <ul>
+                                                        <li id="nav-menu-item-17740" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><i class="menu_icon blank fa"></i><span>Country 1</span><span class="plus"></span></a></li>
+                                                        <li id="nav-menu-item-17741" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><i class="menu_icon blank fa"></i><span>Country 2</span><span class="plus"></span></a></li>
+                                                        <li id="nav-menu-item-17742" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><i class="menu_icon blank fa"></i><span>Country 3</span><span class="plus"></span></a></li>
+                                                        <li id="nav-menu-item-17743" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><i class="menu_icon blank fa"></i><span>Country 4</span><span class="plus"></span></a></li>
+                                                        <li id="nav-menu-item-17744" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><i class="menu_icon blank fa"></i><span>Country 5</span><span class="plus"></span></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li id="nav-menu-item-17736" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><i class="menu_icon blank fa"></i><span>Asia &#038; Pacific</span><span class="plus"></span></a></li>
+                                                <li id="nav-menu-item-17737" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><i class="menu_icon blank fa"></i><span>Americas</span><span class="plus"></span></a></li>
+                                                <li id="nav-menu-item-17738" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><i class="menu_icon blank fa"></i><span>Europe</span><span class="plus"></span></a></li>
+                                                <li id="nav-menu-item-17739" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><i class="menu_icon blank fa"></i><span>Middle East</span><span class="plus"></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li id="nav-menu-item-16486" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children  has_sub narrow">
+                                    <a href="how-it-works/index.html" class=""><i class="menu_icon blank fa"></i><span>How it works</span><span class="plus"></span></a>
+                                    <div class="second">
+                                        <div class="inner">
+                                            <ul>
+                                                <li id="nav-menu-item-16721" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="about-huda/index.html" class=""><i class="menu_icon blank fa"></i><span>About Huda</span><span class="plus"></span></a></li>
+                                                <li id="nav-menu-item-16722" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="our-security/index.html" class=""><i class="menu_icon blank fa"></i><span>Our Security</span><span class="plus"></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li id="nav-menu-item-16483" class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+                                    <a href="identifier" class=""><i class="menu_icon blank fa"></i><span>Login/Sign Up</span><span class="plus"></span></a></li>
+                                <li id="nav-menu-item-16483" class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+                                    <a href="business/index.html" class=""><i class="menu_icon blank fa"></i><span>Business</span><span class="plus"></span></a></li>
+                                <li id="nav-menu-item-16485" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children  has_sub narrow">
+                                    <a href="help/index.html" class=""><i class="menu_icon blank fa"></i><span>Help</span><span class="plus"></span></a>
+                                    <div class="second">
+                                        <div class="inner">
+                                            <ul>
+                                                <li id="nav-menu-item-16723" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="contact/index.html" class=""><i class="menu_icon blank fa"></i><span>Contact Us</span><span class="plus"></span></a></li>
+                                                <li id="nav-menu-item-16747" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="track-transaction/index.html" class=""><i class="menu_icon blank fa"></i><span>Track Transaction</span><span class="plus"></span></a></li>
+                                                <li id="nav-menu-item-16746" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="faqs/index.html" class=""><i class="menu_icon blank fa"></i><span>FAQs</span><span class="plus"></span></a></li>
+                                                <li id="nav-menu-item-16745" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="report-fraud/index.html" class=""><i class="menu_icon blank fa"></i><span>Report Fraud</span><span class="plus"></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li id="nav-menu-item-16666" class="custom_header_link menu-item menu-item-type-custom menu-item-object-custom  narrow">
+                                    <a class=""><i class="menu_icon blank fa"></i><span>Get Started</span><span class="plus"></span></a></li>
+                                <li id="nav-menu-item-17733" class="qtranxs-lang-menu qtranxs-lang-menu-en menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has_sub narrow">
+                                    <a title="English" href="#" class=""><i class="menu_icon blank fa"></i><span>En:&nbsp;<img src="wp-content/plugins/qtranslate-x/flags/gb.png" alt="English" /></span><span class="plus"></span></a>
+                                    <div class="second">
+                                        <div class="inner">
+                                            <ul>
+                                                <li id="nav-menu-item-17745" class="qtranxs-lang-menu-item qtranxs-lang-menu-item-en menu-item menu-item-type-custom menu-item-object-custom "><a title="English" href="en/index.html" class=""><i class="menu_icon blank fa"></i><span><img src="wp-content/plugins/qtranslate-x/flags/gb.png" alt="English" />&nbsp;English</span><span class="plus"></span></a></li>
+                                                <li id="nav-menu-item-17746" class="qtranxs-lang-menu-item qtranxs-lang-menu-item-de menu-item menu-item-type-custom menu-item-object-custom "><a title="Deutsch" href="de/index.html" class=""><i class="menu_icon blank fa"></i><span><img src="wp-content/plugins/qtranslate-x/flags/de.png" alt="Deutsch" />&nbsp;Deutsch</span><span class="plus"></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>						
+                        </nav>
+                        <nav class="mobile_menu">
+                            <ul id="menu-primary-menu-1" class="">
+                                <li id="mobile-menu-item-16751" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children  has_sub">
+                                    <a href="send-money/index.html" class=""><span>Send Money</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+                                    <ul class="sub_menu">
+                                        <li id="mobile-menu-item-17735" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has_sub">
+                                            <a href="#" class=""><span>Africa</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+                                            <ul class="sub_menu">
+                                                <li id="mobile-menu-item-17740" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><span>Country 1</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                                <li id="mobile-menu-item-17741" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><span>Country 2</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                                <li id="mobile-menu-item-17742" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><span>Country 3</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                                <li id="mobile-menu-item-17743" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><span>Country 4</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                                <li id="mobile-menu-item-17744" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="#" class=""><span>Country 5</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                            </ul>
+                                        </li>
+                                        <li id="mobile-menu-item-17736" class="menu-item menu-item-type-custom menu-item-object-custom ">
+                                            <a href="#" class=""><span>Asia &#038; Pacific</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                        <li id="mobile-menu-item-17737" class="menu-item menu-item-type-custom menu-item-object-custom ">
+                                            <a href="#" class=""><span>Americas</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                        <li id="mobile-menu-item-17738" class="menu-item menu-item-type-custom menu-item-object-custom ">
+                                            <a href="#" class=""><span>Europe</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                        <li id="mobile-menu-item-17739" class="menu-item menu-item-type-custom menu-item-object-custom ">
+                                            <a href="#" class=""><span>Middle East</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                    </ul>
+                                </li>
+                                <li id="mobile-menu-item-16486" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children  has_sub">
+                                    <a href="how-it-works/index.html" class=""><span>How it works</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+                                    <ul class="sub_menu">
+                                        <li id="mobile-menu-item-16721" class="menu-item menu-item-type-post_type menu-item-object-page ">
+                                            <a href="about-huda/index.html" class=""><span>About Huda</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                        <li id="mobile-menu-item-16722" class="menu-item menu-item-type-post_type menu-item-object-page ">
+                                            <a href="our-security/index.html" class=""><span>Our Security</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                    </ul>
+                                </li>
+                                <li id="mobile-menu-item-16483" class="menu-item menu-item-type-post_type menu-item-object-page ">
+                                    <a href="business/index.html" class=""><span>Business</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                <li id="mobile-menu-item-16485" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children  has_sub">
+                                    <a href="help/index.html" class=""><span>Help</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+                                    <ul class="sub_menu">
+                                        <li id="mobile-menu-item-16723" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="contact/index.html" class=""><span>Contact Us</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                        <li id="mobile-menu-item-16747" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="track-transaction/index.html" class=""><span>Track Transaction</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                        <li id="mobile-menu-item-16746" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="faqs/index.html" class=""><span>FAQs</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                        <li id="mobile-menu-item-16745" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="report-fraud/index.html" class=""><span>Report Fraud</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                    </ul>
+                                </li>
+                                <li id="mobile-menu-item-16666" class="custom_header_link menu-item menu-item-type-custom menu-item-object-custom "><a ng-click = "navigate()" class=""><span>Get Started</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+
+                                <li id="mobile-menu-item-17733" class="qtranxs-lang-menu qtranxs-lang-menu-en menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has_sub"><a title="English" href="#" class=""><span>En:&nbsp;<img src="wp-content/plugins/qtranslate-x/flags/gb.png" alt="English" /></span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+                                    <ul class="sub_menu">
+                                        <li id="mobile-menu-item-17745" class="qtranxs-lang-menu-item qtranxs-lang-menu-item-en menu-item menu-item-type-custom menu-item-object-custom "><a title="English" href="en/index.html" class=""><span><img src="wp-content/plugins/qtranslate-x/flags/gb.png" alt="English" />&nbsp;English</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                        <li id="mobile-menu-item-17746" class="qtranxs-lang-menu-item qtranxs-lang-menu-item-de menu-item menu-item-type-custom menu-item-object-custom "><a title="Deutsch" href="de/index.html" class=""><span><img src="wp-content/plugins/qtranslate-x/flags/de.png" alt="Deutsch" />&nbsp;Deutsch</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+                                    </ul>
+                                </li>
+                            </ul>					
+                        </nav>
+                    </div>
+                </div>
+            </div>             
+        </div>
+    </div>
+</header>
+
+
+<div class="content content_top_margin_none">
+    <div class="content_inner  ">
